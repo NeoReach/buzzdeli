@@ -92,7 +92,6 @@ add_action( 'widgets_init', '_tk_widgets_init' );
  * Enqueue scripts and styles
  */
 function _tk_scripts() {
-	wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
 
 	// load bootstrap css
 	wp_enqueue_style( '_tk-bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css' );
@@ -115,6 +114,9 @@ function _tk_scripts() {
 	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( '_tk-keyboard-image-navigation', get_template_directory_uri() . '/includes/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	}
+
+		wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
+
 }
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 

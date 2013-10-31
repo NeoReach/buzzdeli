@@ -1,0 +1,7 @@
+*** Infinite Product Scroll Changelog ***
+
+2012.05.14 - version 1.0.0
+ * First release
+ 
+2012.10.29 - version 1.0.1
+ * Update to include language text domains

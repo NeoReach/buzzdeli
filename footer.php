@@ -10,7 +10,6 @@
 			</div><!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
 		</div><!-- close .row -->
 	</div><!-- close .container -->
-</div><!-- close .main-content -->
 
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="container">
@@ -21,7 +20,7 @@
 					<?php do_action( '_tk_credits' ); ?>
 					<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', '_tk' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', '_tk' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( __( 'Theme: %1$s by %2$s.', '_tk' ), '_tk', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+					<?php printf('<a href="http://RankExecitives/" rel="designer">RankExecutives.com</a>' ); ?>
 				</div><!-- close .site-info -->
 			
 			</div>	

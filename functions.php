@@ -19,6 +19,7 @@ if ( ! function_exists( '_tk_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
+include('scroll/scroll.php');
 function _tk_setup() {
     global $cap, $content_width;
 

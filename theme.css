@@ -1,0 +1,24 @@
+body {
+  background-color: #ebe7c3;
+}
+.navbar {
+  background: transparent;
+}
+.navbar {
+  background-color: #88c425;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-nav li a {
+  color: #ffffff;
+}
+.navbar .container {
+  padding-bottom: 0px;
+}
+.navbar-logo {
+  float: left;
+}
+.main-content {
+  margin-top: 60px;
+}

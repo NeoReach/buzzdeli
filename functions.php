@@ -27,6 +27,7 @@ if ( ! function_exists( '_tk_setup' ) ) :
 include('scroll/scroll.php');
 include('shortcodes/ExecutiveShortCodes.php');
 define('FRESH_DELI_DIR_URI',get_template_directory_uri());
+define('FRESH_DELI_OPTIONS',FRESH_DELI_DIR_URI.'/options/');
 define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_URI.'/shortcodes/');
 define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_URI.'/scroll/');
 define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');

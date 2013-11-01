@@ -627,7 +627,7 @@ class NHP_Options{
 	 * @since NHP_Options 1.0
 	*/
 	function _options_page_html(){
-		
+
 		echo '<div class="wrap">';
 			echo '<div id="'.$this->args['page_icon'].'" class="icon32"><br/></div>';
 			echo '<h2 id="nhp-opts-heading">'.get_admin_page_title().'</h2>';
@@ -641,8 +641,8 @@ class NHP_Options{
 				$this->options['last_tab'] = (isset($_GET['tab']) && !get_transient('nhp-opts-saved'))?$_GET['tab']:$this->options['last_tab'];
 				
 				echo '<input type="hidden" id="last_tab" name="'.$this->args['opt_name'].'[last_tab]" value="'.$this->options['last_tab'].'" />';
-				
-				echo '<div id="nhp-opts-header"><img src="img/executive-options-logo.png" width="164px" height="32px" alt="Executive Options" />';
+				echo '<div id="nhp-opts-header">'.
+                    '<div class="options-logo"><img src="'. FRESH_DELI_OPTIONS.'/img/executive-options-logo.png" width="164px" height="32px" alt="Executive Options" /></div>';
 					submit_button('', 'primary', '', false);
 					submit_button(__('Reset to Defaults', 'nhp-opts'), 'secondary', $this->args['opt_name'].'[defaults]', false);
 					echo '<div class="clear"></div><!--clearfix-->';
@@ -666,9 +666,13 @@ class NHP_Options{
 				echo '<div id="nhp-opts-sidebar">';
 					echo '<ul id="nhp-opts-group-menu">';
 						foreach($this->sections as $k => $section){
-							$icon = (!isset($section['icon']))?'<img src="'.$this->url.'img/glyphicons/glyphicons_019_cogwheel.png" /> ':'<img src="'.$section['icon'].'" /> ';
+
+							$icon_class = isset($section['icon']) ? $section['icon'] : 'options-icon-general';
+
+                            $icon = '<div class="options-icon-sprite '.$icon_class.'"></div>';
+
 							echo '<li id="'.$k.'_section_group_li" class="nhp-opts-group-tab-link-li">';
-								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="'.$k.'">'.$icon.'<span>'.$section['title'].'</span></a>';
+								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="'.$k.'">'.$icon.'<span>'.$section['title'].'</span><div class="clear"></div></a>';
 							echo '</li>';
 						}
 						
@@ -682,10 +686,7 @@ class NHP_Options{
 							echo '</li>';
 							echo '<li class="divide">&nbsp;</li>';
 						}//if
-						
-						
-						
-						
+
 						
 						foreach($this->extra_tabs as $k => $tab){
 							$icon = (!isset($tab['icon']))?'<img src="'.$this->url.'img/glyphicons/glyphicons_019_cogwheel.png" /> ':'<img src="'.$tab['icon'].'" /> ';

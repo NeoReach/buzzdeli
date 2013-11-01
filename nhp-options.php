@@ -73,7 +73,7 @@ function setup_framework_options(){
 $args = array();
 
 //Set it to dev mode to view the class settings/info in the form - default is false
-$args['dev_mode'] = true;
+$args['dev_mode'] = false;
 
 //google api key MUST BE DEFINED IF YOU WANT TO USE GOOGLE WEBFONTS
 //$args['google_api_key'] = '***';
@@ -153,19 +153,188 @@ $args['help_sidebar'] = __('<p>This is the sidebar content, HTML is allowed.</p>
 $sections = array();
 
 $sections[] = array(
-				'title' => __('Getting Started', 'nhp-opts'),
-				'desc' => __('<p class="description">This is the description field for the Section. HTML is allowed</p>', 'nhp-opts'),
+				'title' => __('General', 'nhp-opts'),
+				'desc' => __('<p class="description">Adjust general settings such as: upload custom logo images, upload custom fonts, and much more.</p>', 'nhp-opts'),
 				//all the glyphicons are included in the options folder, so you can hook into them, or link to your own custom ones.
 				//You dont have to though, leave it blank for default.
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_062_attach.png'
+				//'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_062_attach.png'
+                'icon' => 'options-icon-general',
 				//Lets leave this as a blank section, no options just some intro text set above.
-				//'fields' => array()
-				);
+				'fields' =>  array(
+                                array(
+                                    'id' => 'theme-logo',
+                                    'type' => 'upload',
+                                    'title' => __('Theme Logo', 'nhp-opts'),
+                                    'sub_desc' => __('Upload your custom logo.', 'nhp-opts'),
+                                    'desc' => __('', 'nhp-opts')
+                                ),
+                                array(
+                                    'id' => 'theme-font',
+                                    'type' => 'upload',
+                                    'title' => __('Custom Font', 'nhp-opts'),
+                                    'sub_desc' => __('Upload a custom font.', 'nhp-opts'),
+                                    'desc' => __('', 'nhp-opts')
+                                ),
+                                array(
+                                    'id' => 'logo-text', //must be unique
+                                    'type' => 'text', //builtin fields include:
+                                    //text|textarea|editor|checkbox|multi_checkbox|radio|radio_img|button_set|select|multi_select|color|date|divide|info|upload
+                                    'title' => __('Logo Text', 'nhp-opts'),
+                                    'sub_desc' => __('Set custom text which will appear next to the logo in the header.', 'nhp-opts'),
+                                    'desc' => __(''),
+                                    //'validate' => '', //builtin validation includes: email|html|html_custom|no_html|js|numeric|url
+                                    //'msg' => 'custom error message', //override the default validation error message for specific fields
+                                    //'std' => '', //This is a default value, used to set the options on theme activation, and if the user hits the Reset to defaults Button
+                                    //'class' => '' //Set custom classes for elements if you want to do something a little different - default is "regular-text"
+                                ),
+                    /*
+                                array(
+                                    'id' => '2',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Email Validated', 'nhp-opts'),
+                                    'sub_desc' => __('This is a little space under the Field Title in the Options table, additonal info is good in here.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'email',
+                                    'msg' => 'custom error message',
+                                    'std' => 'test@test.com'
+                                ),
+                                array(
+                                    'id' => 'multi_text',
+                                    'type' => 'multi_text',
+                                    'title' => __('Multi Text Option', 'nhp-opts'),
+                                    'sub_desc' => __('This is a little space under the Field Title in the Options table, additonal info is good in here.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts')
+                                ),
+                                array(
+                                    'id' => '3',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - URL Validated', 'nhp-opts'),
+                                    'sub_desc' => __('This must be a URL.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'url',
+                                    'std' => 'http://no-half-pixels.com'
+                                ),
+                                array(
+                                    'id' => '4',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Numeric Validated', 'nhp-opts'),
+                                    'sub_desc' => __('This must be numeric.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'numeric',
+                                    'std' => '0',
+                                    'class' => 'small-text'
+                                ),
+                                array(
+                                    'id' => 'comma_numeric',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Comma Numeric Validated', 'nhp-opts'),
+                                    'sub_desc' => __('This must be a comma seperated string of numerical values.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'comma_numeric',
+                                    'std' => '0',
+                                    'class' => 'small-text'
+                                ),
+                                array(
+                                    'id' => 'no_special_chars',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - No Special Chars Validated', 'nhp-opts'),
+                                    'sub_desc' => __('This must be a alpha numeric only.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'no_special_chars',
+                                    'std' => '0'
+                                ),
+                                array(
+                                    'id' => 'str_replace',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Str Replace Validated', 'nhp-opts'),
+                                    'sub_desc' => __('You decide.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'str_replace',
+                                    'str' => array('search' => ' ', 'replacement' => 'thisisaspace'),
+                                    'std' => '0'
+                                ),
+                                array(
+                                    'id' => 'preg_replace',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Preg Replace Validated', 'nhp-opts'),
+                                    'sub_desc' => __('You decide.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'preg_replace',
+                                    'preg' => array('pattern' => '/[^a-zA-Z_ -]/s', 'replacement' => 'no numbers'),
+                                    'std' => '0'
+                                ),
+                                array(
+                                    'id' => 'custom_validate',
+                                    'type' => 'text',
+                                    'title' => __('Text Option - Custom Callback Validated', 'nhp-opts'),
+                                    'sub_desc' => __('You decide.', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate_callback' => 'validate_callback_function',
+                                    'std' => '0'
+                                ),
+                                array(
+                                    'id' => '5',
+                                    'type' => 'textarea',
+                                    'title' => __('Textarea Option - No HTML Validated', 'nhp-opts'),
+                                    'sub_desc' => __('All HTML will be stripped', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'no_html',
+                                    'std' => 'No HTML is allowed in here.'
+                                ),
+                                array(
+                                    'id' => '6',
+                                    'type' => 'textarea',
+                                    'title' => __('Textarea Option - HTML Validated', 'nhp-opts'),
+                                    'sub_desc' => __('HTML Allowed (wp_kses)', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'html', //see http://codex.wordpress.org/Function_Reference/wp_kses_post
+                                    'std' => 'HTML is allowed in here.'
+                                ),
+                                array(
+                                    'id' => '7',
+                                    'type' => 'textarea',
+                                    'title' => __('Textarea Option - HTML Validated Custom', 'nhp-opts'),
+                                    'sub_desc' => __('Custom HTML Allowed (wp_kses)', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'html_custom',
+                                    'std' => 'Some HTML is allowed in here.',
+                                    'allowed_html' => array('') //see http://codex.wordpress.org/Function_Reference/wp_kses
+                                ),
+                                array(
+                                    'id' => '8',
+                                    'type' => 'textarea',
+                                    'title' => __('Textarea Option - JS Validated', 'nhp-opts'),
+                                    'sub_desc' => __('JS will be escaped', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'validate' => 'js'
+                                ),
+                                array(
+                                    'id' => '9',
+                                    'type' => 'editor',
+                                    'title' => __('Editor Option', 'nhp-opts'),
+                                    'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'std' => 'OOOOOOhhhh, rich editing.'
+                                )
+                            ,
+                                array(
+                                    'id' => 'editor2',
+                                    'type' => 'editor',
+                                    'title' => __('Editor Option 2', 'nhp-opts'),
+                                    'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
+                                    'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                                    'std' => 'OOOOOOhhhh, rich editing2.'
+                                )
+                    */
+                            )
+                        );
+
+
 
 				
 $sections[] = array(
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_107_text_resize.png',
-				'title' => __('Text Fields', 'nhp-opts'),
+				'icon' => 'options-icon-layout',
+				'title' => __('Layout', 'nhp-opts'),
 				'desc' => __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'nhp-opts'),
 				'fields' => array(
 					array(
@@ -320,8 +489,8 @@ $sections[] = array(
 					)
 				);
 $sections[] = array(
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_150_check.png',
-				'title' => __('Radio/Checkbox Fields', 'nhp-opts'),
+				'icon' => 'options-icon-integration',
+				'title' => __('Integration', 'nhp-opts'),
 				'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'nhp-opts'),
 				'fields' => array(
 					array(
@@ -380,8 +549,8 @@ $sections[] = array(
 					)
 				);
 $sections[] = array(
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_157_show_lines.png',
-				'title' => __('Select Fields', 'nhp-opts'),
+				'icon' => 'options-icon-colorization',
+				'title' => __('Colorization', 'nhp-opts'),
 				'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'nhp-opts'),
 				'fields' => array(
 					array(
@@ -405,8 +574,8 @@ $sections[] = array(
 					)
 				);
 $sections[] = array(
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_023_cogwheels.png',
-				'title' => __('Custom Fields', 'nhp-opts'),
+				'icon' => 'options-icon-support',
+				'title' => __('Support', 'nhp-opts'),
 				'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'nhp-opts'),
 				'fields' => array(
 					array(
@@ -573,8 +742,9 @@ $sections[] = array(
 					)
 				);
 
+    /*
 $sections[] = array(
-				'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_093_crop.png',
+				'icon' => 'options-icon-general',
 				'title' => __('Non Value Fields', 'nhp-opts'),
 				'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'nhp-opts'),
 				'fields' => array(
@@ -610,7 +780,7 @@ $sections[] = array(
 						)				
 					)
 				);
-				
+				*/
 				
 	$tabs = array();
 			
@@ -641,7 +811,7 @@ $sections[] = array(
 
 
 	$tabs['theme_info'] = array(
-					'icon' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_195_circle_info.png',
+					'icon' => 'options-icon-theme-info',
 					'title' => __('Theme Information', 'nhp-opts'),
 					'content' => $theme_info
 					);

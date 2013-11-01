@@ -435,3 +435,33 @@ border: 1px solid #e5e5e5;
 		display: block;
 	}
 }
+
+
+/**
+ * Executive Options
+ */
+.options-logo{float:left;}
+
+/*
+#nhp-opts-group-menu li:hover{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; filter: alpha(opacity=60); -moz-opacity: 0.6;-khtml-opacity: 0.6;opacity: 0.6;}
+*/
+
+#nhp-opts-group-menu li a span{display:block;float:left;margin:5px 0 0 10px;}
+/*#nhp-opts-group-menu li a span:hover{color:#008eb8;}*/
+
+#nhp-opts-group-menu li a:hover div,#nhp-opts-group-menu li a:hover span{color:#008eb8;}
+
+.options-icon-sprite{float:left;background: url(../img/glyph-icons-sprite.png) no-repeat;margin:0 5px 0 0 ;}
+.options-icon-general{background-position:0 0;width: 30px;height: 24px;}
+.options-icon-general:hover{background-position: -30px 0;}
+.options-icon-layout{background-position: 0 -26px; width: 30px; height: 21px;}
+.options-icon-layout:hover{background-position: -30px -26px;}
+.options-icon-colorization{background-position: 0 -49px; width: 30px; height: 24px;}
+.options-icon-colorization:hover{background-position: -30px -49px ;}
+.options-icon-integration{background-position: 0 -73px; width: 30px; height: 24px;}
+.options-icon-integration:hover{background-position: -30px -73px ;}
+.options-icon-support{background-position: 0 -97px; width: 30px; height: 28px;}
+.options-icon-support:hover{background-position: -30px -97px;}
+.clear{clear:both;}
+
+

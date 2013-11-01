@@ -294,6 +294,7 @@ border: 1px solid #e5e5e5;
 	padding:20px 0px;
 	border-top: 1px solid #DFDFDF;
 }
+.nhp-opts-group-tab .nhp-opts-theme-data.theme-name,
 .nhp-opts-group-tab .nhp-opts-theme-data.theme-uri,
 .nhp-opts-group-tab .nhp-opts-theme-data.theme-author,
 .nhp-opts-group-tab .nhp-opts-theme-data.theme-version{
@@ -461,6 +462,12 @@ border: 1px solid #e5e5e5;
 .options-icon-integration:hover{background-position: -30px -73px ;}
 .options-icon-support{background-position: 0 -97px; width: 30px; height: 28px;}
 .options-icon-support:hover{background-position: -30px -97px;}
+.options-icon-import-export{background-position: 0 -127px; width: 30px; height: 28px;}
+.options-icon-import-export:hover{background-position: -30px -127px;}
+.options-icon-theme-info{background-position: 0 -156px; width: 30px; height: 28px;}
+.options-icon-theme-info:hover{background-position: -30px -156px;}
+
+
 .clear{clear:both;}
 
 

@@ -615,12 +615,7 @@ class NHP_Options{
 		return $plugin_options;
 	}//function
 	
-	
-	
-	
-	
-	
-	
+
 	
 	/**
 	 * HTML OUTPUT.
@@ -673,26 +668,32 @@ class NHP_Options{
                             $icon = '<div class="options-icon-sprite '.$icon_class.'"></div>';
 
 							echo '<li id="'.$k.'_section_group_li" class="nhp-opts-group-tab-link-li">';
-								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="'.$k.'">'.$icon.'<span>'.$section['title'].'</span><div class="clear"></div></a>';
+								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="'.$k.'">'.$icon.'<span>'.$section['title'].'</span>'.
+                                    '<div class="clear"></div></a>';
 							echo '</li>';
 						}
 						
-						echo '<li class="divide">&nbsp;</li>';
+						//echo '<li class="divide">&nbsp;</li>';
 						
 						do_action('nhp-opts-after-section-menu-items-'.$this->args['opt_name'], $this);
 						
 						if(true === $this->args['show_import_export']){
 							echo '<li id="import_export_default_section_group_li" class="nhp-opts-group-tab-link-li">';
-									echo '<a href="javascript:void(0);" id="import_export_default_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="import_export_default"><img src="'.$this->url.'img/glyphicons/glyphicons_082_roundabout.png" /> <span>'.__('Import / Export', 'nhp-opts').'</span></a>';
+									echo '<a href="javascript:void(0);" id="import_export_default_section_group_li_a" class="nhp-opts-group-tab-link-a" data-rel="import_export_default"><div class="options-icon-sprite options-icon-import-export"></div><span>'.__('Import / Export', 'nhp-opts').'</span>'.
+                                        '<div class="clear"></div></a>';
 							echo '</li>';
-							echo '<li class="divide">&nbsp;</li>';
+							//echo '<li class="divide">&nbsp;</li>';
 						}//if
 
-						
+
 						foreach($this->extra_tabs as $k => $tab){
-							$icon = (!isset($tab['icon']))?'<img src="'.$this->url.'img/glyphicons/glyphicons_019_cogwheel.png" /> ':'<img src="'.$tab['icon'].'" /> ';
+
+                            $icon_class = isset($tab['icon']) ? $tab['icon'] : 'options-icon-general';
+                            $icon = '<div class="options-icon-sprite '.$icon_class.'"></div>';
+
 							echo '<li id="'.$k.'_section_group_li" class="nhp-opts-group-tab-link-li">';
-								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a custom-tab" data-rel="'.$k.'">'.$icon.'<span>'.$tab['title'].'</span></a>';
+								echo '<a href="javascript:void(0);" id="'.$k.'_section_group_li_a" class="nhp-opts-group-tab-link-a custom-tab" data-rel="'.$k.'">'.$icon.'<span>'.$tab['title'].'</span>'.
+                                    '<div class="clear"></div></a>';
 							echo '</li>';
 						}
 

@@ -4,7 +4,7 @@
  *
  * @package _tk
  */
-//test
+
 /**
  * Set NHP Options
  */
@@ -170,3 +170,7 @@ require get_template_directory() . '/includes/jetpack.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
+
+//testing add comment
+//to the end
+//of this file

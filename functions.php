@@ -88,7 +88,6 @@ function _tk_setup() {
     register_nav_menus( array(
         'primary'  => __( 'Header bottom menu', '_tk' ),
     ) );
-
 }
 endif; // _tk_setup
 add_action( 'after_setup_theme', '_tk_setup' );
@@ -139,6 +138,7 @@ function _tk_scripts() {
 		wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
 
 }
+
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 
 /**

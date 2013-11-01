@@ -20,6 +20,19 @@ if ( ! function_exists( '_tk_setup' ) ) :
  * support post thumbnails.
  */
 include('scroll/scroll.php');
+include('shortcodes/ExecutiveShortCodes.php');
+define('FRESH_DELI_DIR_URI',get_template_directory_uri());
+define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_URI.'/shortcodes/');
+define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_URI.'/scroll/');
+define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/css/');
+define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/js/');
+define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/img/');
+
+
+
+echo "space".FRESH_DELI_SHORTCODES;
+
+
 function _tk_setup() {
     global $cap, $content_width;
 
@@ -27,6 +40,12 @@ function _tk_setup() {
     add_editor_style();
 
     if ( function_exists( 'add_theme_support' ) ) {
+
+    	/**
+    	 * WooCommerce
+    	 *  
+    	 * */
+    	add_theme_support( 'woocommerce' );
 
 		/**
 		 * Add default posts and comments RSS feed links to head

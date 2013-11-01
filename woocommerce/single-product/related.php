@@ -31,16 +31,16 @@ $woocommerce_loop['columns'] 	= $columns;
 
 if ( $products->have_posts() ) : ?>
 <div class="hidden-xs">
-	<div class="related products related col-3">
+	<div class="related products related">
 
 		<h2><?php _e( 'Related Products', 'woocommerce' ); ?></h2>
 
 		<?php woocommerce_product_loop_start(); ?>
 
 			<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-
+<div class="col-md-3">
 				<?php woocommerce_get_template_part( 'content', 'product' ); ?>
-
+</div>
 			<?php endwhile; // end of the loop. ?>
 
 		<?php woocommerce_product_loop_end(); ?>

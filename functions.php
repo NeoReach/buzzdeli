@@ -33,9 +33,6 @@ define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');
 define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/includes/js/');
 define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/includes/img/');
 
-
-
-
 function _tk_setup() {
     global $cap, $content_width;
 

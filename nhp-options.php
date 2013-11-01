@@ -164,13 +164,15 @@ $sections[] = array(
                                     'sub_desc' => __('upload your custom logo.', 'nhp-opts'),
                                     'desc' => __('', 'nhp-opts')
                                 ),
+
                                 array(
                                     'id' => 'theme-font',
-                                    'type' => 'upload',
-                                    'title' => __('Custom Font', 'nhp-opts'),
-                                    'sub_desc' => __('upload a custom font.', 'nhp-opts'),
+                                    'type' => 'google_webfonts',//doesnt need to be called for callback fields
+                                    'title' => __('Custom Google Webfonts', 'nhp-opts'),
+                                    'sub_desc' => __('upload google webfont.', 'nhp-opts'),
                                     'desc' => __('', 'nhp-opts')
                                 ),
+
                                 array(
                                     'id' => 'logo-text', //must be unique
                                     'type' => 'text', //builtin fields include:

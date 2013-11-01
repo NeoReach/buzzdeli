@@ -24,13 +24,11 @@ include('shortcodes/ExecutiveShortCodes.php');
 define('FRESH_DELI_DIR_URI',get_template_directory_uri());
 define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_URI.'/shortcodes/');
 define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_URI.'/scroll/');
-define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/css/');
-define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/js/');
-define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/img/');
+define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');
+define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/includes/js/');
+define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/includes/img/');
 
 
-
-echo "space".FRESH_DELI_SHORTCODES;
 
 
 function _tk_setup() {

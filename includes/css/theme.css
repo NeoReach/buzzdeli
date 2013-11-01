@@ -1,3 +1,9 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 body {
   background-color: #ffffff;
 }
@@ -25,4 +31,24 @@ body {
 #colophon {
   background-color: #88c425;
   min-height: 150px;
+}
+img.wp-post-image,
+.product .thumbnails img {
+  border-radius: 500px;
+}
+.center-product {
+  text-align: center !important;
+}
+.star-rating {
+  margin: auto;
+}
+.products .product {
+  text-align: center;
+}
+.products .product .star-rating {
+  margin: auto !important;
+}
+.woocommerce ul.products li.product .onsale,
+.woocommerce-page ul.products li.product .onsale {
+  margin: 15px !important;
 }

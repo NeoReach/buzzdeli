@@ -11,8 +11,13 @@
  */
 
 get_header(); ?>
-			<div class="main-content-inner col-12 col-lg-12">
+			<div class="main-content-inner col-8 col-lg-8">
 		<?php  woocommerce_content(); ?>
+</div>
+<div class="col-md-4">
+<?php
+get_sidebar('shop');
+?>
 </div>
 <?php get_footer(); ?>
 s

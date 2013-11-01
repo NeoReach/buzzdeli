@@ -116,8 +116,13 @@ function _tk_scripts() {
 	
 
 	// load bootstrap css
+
+
+		wp_enqueue_style( '_tk-bootstrap_fill', '//cdn.jsdelivr.net/bootstrap/3.0.1/css/bootstrap.min.css ');
+
 	wp_enqueue_style( '_tk-bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css' );
-	
+
+
 	// load bootstrap js
 	wp_enqueue_script('_tk-bootstrapjs', get_template_directory_uri().'/includes/resources/bootstrap/js/bootstrap.min.js', array('jquery') );
 
@@ -172,7 +177,3 @@ require get_template_directory() . '/includes/jetpack.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
-
-//testing add comment
-//to the end
-//of this file

@@ -1,3 +1,9 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 body {
   background-color: #ffffff;
 }
@@ -25,4 +31,45 @@ body {
 #colophon {
   background-color: #88c425;
   min-height: 150px;
+}
+img.wp-post-image,
+.product .thumbnails img {
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+}
+.center-product {
+  text-align: center !important;
+}
+.star-rating {
+  margin: auto;
+}
+.products .product {
+  text-align: center;
+}
+.products .product .star-rating {
+  margin: auto !important;
+}
+.woocommerce ul.products li.product .onsale,
+.woocommerce-page ul.products li.product .onsale {
+  margin: 15px !important;
+}
+.woocommerce-ordering select {
+  padding: 3px;
+  margin: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 0 #cccccc, 0 -1px #ffffff inset;
+  -moz-box-shadow: 0 3px 0 #cccccc, 0 -1px #ffffff inset;
+  box-shadow: 0 3px 0 #cccccc, 0 -1px #ffffff inset;
+  background: #f8f8f8;
+  color: #888;
+  border: none;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
 }

@@ -1,3 +1,5 @@
+@import "elements.less";
+
 @primary : white;
 @header-font : white;
 @green : #88c425;
@@ -11,3 +13,36 @@ body {background-color:@primary}
 .navbar-logo {float:left}
 .main-content {margin-top:60px;}
 #colophon {background-color:@green; min-height:150px}
+img.wp-post-image, .product .thumbnails img{.rounded(500px)}
+.center-product {text-align:center !important}
+.star-rating {margin:auto;}
+.products .product {text-align:center}
+.products {
+.product  {
+.star-rating {margin:auto !important}	
+}
+
+}
+.woocommerce ul.products li.product .onsale, .woocommerce-page ul.products li.product 
+.onsale {margin:15px !important;}
+
+
+.woocommerce-ordering select {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}

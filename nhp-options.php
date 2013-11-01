@@ -166,14 +166,6 @@ $sections[] = array(
                                 ),
 
                                 array(
-                                    'id' => 'theme-font',
-                                    'type' => 'google_webfonts',//doesnt need to be called for callback fields
-                                    'title' => __('Custom Google Webfonts', 'nhp-opts'),
-                                    'sub_desc' => __('upload google webfont.', 'nhp-opts'),
-                                    'desc' => __('', 'nhp-opts')
-                                ),
-
-                                array(
                                     'id' => 'logo-text', //must be unique
                                     'type' => 'text', //builtin fields include:
                                     //text|textarea|editor|checkbox|multi_checkbox|radio|radio_img|button_set|select|multi_select|color|date|divide|info|upload
@@ -185,6 +177,16 @@ $sections[] = array(
                                     //'std' => '', //This is a default value, used to set the options on theme activation, and if the user hits the Reset to defaults Button
                                     //'class' => '' //Set custom classes for elements if you want to do something a little different - default is "regular-text"
                                 ),
+
+                                array(
+                                    'id' => 'theme-font',
+                                    'type' => 'google_webfonts',//doesnt need to be called for callback fields
+                                    'title' => __('Custom Google Webfonts', 'nhp-opts'),
+                                    'sub_desc' => __('upload google webfont.', 'nhp-opts'),
+                                    'desc' => __('', 'nhp-opts')
+                                ),
+
+
                     /*
                                 array(
                                     'id' => '2',

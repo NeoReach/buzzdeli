@@ -12,7 +12,11 @@
  */
 
 get_header(); ?>
-	
+	<div class="main-content-inner col-4 col-lg-4">
+<?php get_sidebar(); ?>
+</div>
+	<div class="main-content-inner col-8 col-lg-8">
+
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>
@@ -35,6 +39,5 @@ get_header(); ?>
 		<?php get_template_part( 'no-results', 'index' ); ?>
 
 	<?php endif; ?>
-
-<?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

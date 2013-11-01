@@ -24,7 +24,7 @@ Twitter Bootstrap
 
 /* Import the necessary TK Bootstrap WP CSS additions */
 @import url( includes/css/bootstrap-wp.css );
-@import url( theme.css );
+@import url( includes/css/theme.css );
 
 
 

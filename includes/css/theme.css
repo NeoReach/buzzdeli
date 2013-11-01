@@ -1,5 +1,5 @@
 body {
-  background-color: #ebe7c3;
+  background-color: #ffffff;
 }
 .navbar {
   background: transparent;
@@ -21,4 +21,8 @@ body {
 }
 .main-content {
   margin-top: 60px;
+}
+#colophon {
+  background-color: #88c425;
+  min-height: 150px;
 }

@@ -6,6 +6,7 @@
  */
 
 get_header(); ?>
+			<div class="main-content-inner col-8 col-lg-8">
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
@@ -20,6 +21,9 @@ get_header(); ?>
 		?>
 
 	<?php endwhile; // end of the loop. ?>
+</div>
+			<div class="main-content-inner col-4 col-lg-4">
 
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

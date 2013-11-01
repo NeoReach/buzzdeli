@@ -6,7 +6,8 @@
  */
 
 get_header(); ?>
-	
+				<div class="main-content-inner col-8 col-lg-8">
+
 	<?php if ( have_posts() ) : ?>
 
 		<header class="page-header">
@@ -27,6 +28,8 @@ get_header(); ?>
 		<?php get_template_part( 'no-results', 'search' ); ?>
 
 	<?php endif; // end of loop. ?>
-
+</div>
+			<div class="main-content-inner col-4 col-lg-4">
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

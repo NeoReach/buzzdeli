@@ -1,4 +1,5 @@
 <?php
+
 if ( ! class_exists('NHP_Options') ){
 	
 	// windows-proof constants: replace backward by forward slashes - thanks to: https://github.com/peterbouwmeester

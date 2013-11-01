@@ -6,7 +6,12 @@
  */
 
 //daniel moret testing git
+function test_function_creation()
+{
+    $testing = $test;
 
+    //for test purpose only'
+}
 /**
  * Set NHP Options
  */

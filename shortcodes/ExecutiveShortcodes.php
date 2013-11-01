@@ -104,15 +104,15 @@ function select_grid(){
 
 }
 function button_js() {
-        echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-        jQuery(document).ready(function(){
-           $("#grid_select, #grid_button").change(function() {
-            var val = $(this).find(":selected").val();
-console.log(val);
-            $("#content").val($("#content").val()+val);})
-        });
-        </script>';
+       // echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+        echo '<script type="text/javascript">'.
+        'jQuery(document).ready(function(){'.
+           '$("#grid_select, #grid_button").change(function() {'.
+            'var val = $(this).find(":selected").val();'.
+            'console.log(val);'.
+            '$("#content").val($("#content").val()+val);})'.
+        '});'.
+        '</script>';
 }
 }
 

@@ -73,3 +73,9 @@ img.wp-post-image,
   appearance: none;
   cursor: pointer;
 }
+.dropdown-menu li a {
+  color: #000000;
+}
+.woocommerce-tabs .panel {
+  padding: 10px !important;
+}

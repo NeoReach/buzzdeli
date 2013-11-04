@@ -6,6 +6,8 @@
  */
 
 get_header(); ?>
+			<div class="main-content-inner col-9 col-lg-9">
+
 
 	<?php // add the class "panel" below here to wrap the content-padder in Bootstrap style ;) ?>	
 	<section class="content-padder error-404 not-found">
@@ -23,6 +25,9 @@ get_header(); ?>
 		</div><!-- .page-content -->
 
 	</section><!-- .content-padder -->
-		
+		</div>
+					<div class="main-content-inner col-3 col-lg-3">
+
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

@@ -11,7 +11,21 @@
  */
 
 get_header(); ?>
-			<div class="main-content-inner col-8 col-lg-8">
+<?php
+if(is_product()) :
+?>
+			<div class="main-content-inner col-12 col-lg-12">
+		<?php  woocommerce_content(); ?>
+</div>
+
+<?php
+endif;
+?>
+
+<?php
+if(is_shop()):
+?>
+<div class="main-content-inner col-8 col-lg-8">
 		<?php  woocommerce_content(); ?>
 </div>
 <div class="col-md-4">
@@ -19,5 +33,8 @@ get_header(); ?>
 get_sidebar('shop');
 ?>
 </div>
+<?php
+endif;
+?>
+
 <?php get_footer(); ?>
-s

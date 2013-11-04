@@ -34,6 +34,9 @@ define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_URI.'/scroll/');
 define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');
 define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/includes/js/');
 define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/includes/img/');
+add_action( 'admin_enqueue_scripts', '_tk_admin_scripts' );
+add_action( 'wp_enqueue_scripts', '_tk_scripts' );
+
 
 function _tk_setup() {
     global $cap, $content_width;
@@ -106,19 +109,46 @@ function _tk_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Shop Sidebar', '_tk' ),
+		'id'            => 'shop',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+
 }
 add_action( 'widgets_init', '_tk_widgets_init' );
 
 /**
  * Enqueue scripts and styles
  */
+
+function _tk_admin_scripts()
+{
+
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('_tk-backendjs', FRESH_DELI_JS.'backend.js', array('jquery') );
+
+
+
+}
 function _tk_scripts() {
 	
 
 	// load bootstrap css
 
+		wp_enqueue_script( 'jquery');
 
-		wp_enqueue_style( '_tk-bootstrap_fill', '//cdn.jsdelivr.net/bootstrap/3.0.1/css/bootstrap.min.css ');
+
+	add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+		wp_enqueue_script('_tk-backendjs', FRESH_DELI_JS.'frontend.js', array('jquery') );
+
+
+    wp_enqueue_style( '_tk-bootstrap_fill', '//cdn.jsdelivr.net/bootstrap/3.0.1/css/bootstrap.min.css ');
 
 	wp_enqueue_style( '_tk-bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css' );
 
@@ -146,7 +176,6 @@ function _tk_scripts() {
 
 }
 
-add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -176,4 +205,62 @@ require get_template_directory() . '/includes/jetpack.php';
 /**
  * Load Jetpack compatibility file.
  */
+
 require get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
+
+
+
+
+
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+
+/**
+ * WooCommerce Loop Product Thumbs
+ **/
+
+ if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
+
+	function woocommerce_template_loop_product_thumbnail() {
+		echo woocommerce_get_product_thumbnail();
+	} 
+ }
+
+
+/**
+ * WooCommerce Product Thumbnail
+ **/
+ if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {
+	
+	function woocommerce_get_product_thumbnail( $size = 'shop_catalog', $placeholder_width = 0, $placeholder_height = 0  ) {
+		global $post, $woocommerce;
+
+		if ( ! $placeholder_width )
+			$placeholder_width = $woocommerce->get_image_size( 'shop_catalog_image_width' );
+		if ( ! $placeholder_height )
+			$placeholder_height = $woocommerce->get_image_size( 'shop_catalog_image_height' );
+			
+			$output = '<div class="center-product">';
+
+			if ( has_post_thumbnail() ) {
+				
+				$output .= get_the_post_thumbnail( $post->ID, $size ); 
+				
+			} else {
+			
+				$output .= '<img src="'. woocommerce_placeholder_img_src() .'" alt="Placeholder" width="' . $placeholder_width . '" height="' . $placeholder_height . '" />';
+			
+			}
+			
+			$output .= '</div>';
+			
+			return $output;
+	}
+ }
+
+
+
+
+
+?>
+

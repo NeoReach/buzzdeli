@@ -29,16 +29,16 @@ if ( ! function_exists( '_tk_setup' ) ) :
 define('FRESH_DELI_DIR_PATH',get_template_directory()."/");
 define('FRESH_DELI_DIR_URI',get_template_directory_uri()."/");
 define('FRESH_DELI_OPTIONS',FRESH_DELI_DIR_PATH.'/options/');
-define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_PATH.'/shortcodes/');
-define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_PATH.'/scroll/');
-define('FRESH_DELI_SLIDER',FRESH_DELI_DIR_PATH.'/slider/');
+define('FRESH_DELI_SHORTCODES_PATH',FRESH_DELI_DIR_PATH.'/shortcodes/');
+define('FRESH_DELI_SCROLL_PATH',FRESH_DELI_DIR_PATH.'/scroll/');
+define('FRESH_DELI_SLIDER_PATH',FRESH_DELI_DIR_PATH.'slider/');
+define('FRESH_DELI_SLIDER_URI',FRESH_DELI_DIR_URI.'slider/');
 define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');
 define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/includes/js/');
 define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/includes/img/');
-include(FRESH_DELI_SCROLL.'scroll.php');
-include(FRESH_DELI_SHORTCODES.'ExecutiveShortCodes.php');
-include(FRESH_DELI_SLIDER.'flexslider.php');
-
+include(FRESH_DELI_SCROLL_PATH.'scroll.php');
+include(FRESH_DELI_SHORTCODES_PATH.'ExecutiveShortCodes.php');
+include(FRESH_DELI_SLIDER_PATH.'flexslider.php');
 
 add_action( 'admin_enqueue_scripts', '_tk_admin_scripts' );
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
@@ -99,8 +99,45 @@ function _tk_setup() {
     register_nav_menus( array(
         'primary'  => __( 'Header bottom menu', '_tk' ),
     ) );
+
+
+	$labels = array( 'name' => __( 'Slides', 'flexslider_hg' ), 'singular_name' => __( 'Slide', 'flexslider_hg' ), 'all_items' => __( 'All Slides', 'flexslider_hg' ), 'add_new' => __( 'Add New Slide', 'flexslider_hg' ), 'add_new_item' => __( 'Add New Slide', 'flexslider_hg' ), 'edit_item' => __( 'Edit Slide', 'flexslider_hg' ), 'new_item' => __( 'New Slide', 'flexslider_hg' ),'view_item' => __( 'View Slide', 'flexslider_hg' ),'search_items' => __( 'Search Slides', 'flexslider_hg' ),'not_found' => __( 'No Slide found', 'flexslider_hg' ), 'not_found_in_trash' => __( 'No Slide found in Trash', 'flexslider_hg' ), 'parent_item_colon' => '' );
+	
+	$args = array(
+		'labels'               => $labels,
+		'public'               => true,
+		'publicly_queryable'   => true,
+		'_builtin'             => false,
+		'show_ui'              => true, 
+		'query_var'            => true,
+		'rewrite'              => apply_filters( 'flexslider_hg_post_type_rewite', array( "slug" => "slides" )),
+		'capability_type'      => 'post',
+		'hierarchical'         => false,
+		'menu_position'        => 26.6,
+		'supports'             => array( 'title', 'thumbnail', 'excerpt', 'page-attributes' ),
+		'taxonomies'           => array(),
+		'has_archive'          => true,
+		'show_in_nav_menus'    => false
+	);
+	register_post_type( 'slides', $args );
+
+
+
+
 }
 endif; // _tk_setup
+
+	add_action( 'init', 'flexslider_hg_setup_init' );
+	add_action( 'admin_head', 'flexslider_hg_admin_icon' );	
+	add_action( 'wp_enqueue_scripts', 'flexslider_wp_enqueue' );	
+
+	add_action( 'add_meta_boxes', 'flexslider_hg_create_slide_metaboxes' );
+	add_action( 'save_post', 'flexslider_hg_save_meta', 1, 2 );
+	
+	add_filter( 'manage_edit-slides_columns', 'flexslider_hg_columns' );
+	add_action( 'manage_slides_posts_custom_column', 'flexslider_hg_add_columns' );
+	
+	add_shortcode('flexslider', 'flexslider_hg_shortcode');
 add_action( 'after_setup_theme', '_tk_setup' );
 
 /**

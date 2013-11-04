@@ -17,9 +17,9 @@ get_header(); ?>
 		<?php 
 		if(is_front_page() || is_home())
 		{
-		get_template_part( 'content', 'page' );
-	}else{
 		get_template_part( 'content', 'homepage' );
+	}else{
+		get_template_part( 'content', 'page' );
 	}
 
 		?>

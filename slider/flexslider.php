@@ -1,9 +1,6 @@
 <?php
-
-
-
 /* SETUP */
-define( 'FLEXSLIDER_HG_URI', FRESH_DELI_SLIDER);
+define( 'FLEXSLIDER_HG_URI', FRESH_DELI_SLIDER_URI);
 
 
 // GET ROTATORS:
@@ -17,17 +14,6 @@ function flexslider_hg_rotators()
 }
 
 
-	add_action( 'init', 'flexslider_hg_setup_init' );
-	add_action( 'admin_head', 'flexslider_hg_admin_icon' );	
-	add_action( 'wp_enqueue_scripts', 'flexslider_wp_enqueue' );	
-
-	add_action( 'add_meta_boxes', 'flexslider_hg_create_slide_metaboxes' );
-	add_action( 'save_post', 'flexslider_hg_save_meta', 1, 2 );
-	
-	add_filter( 'manage_edit-slides_columns', 'flexslider_hg_columns' );
-	add_action( 'manage_slides_posts_custom_column', 'flexslider_hg_add_columns' );
-	
-	add_shortcode('flexslider', 'flexslider_hg_shortcode');
 
 
 

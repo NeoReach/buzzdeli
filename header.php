@@ -6,7 +6,16 @@
  *
  * @package _tk
  */
-?><!DOCTYPE html>
+
+/**
+ * Set Executive Theme Options
+ */
+do_action('_tk_header_top');
+
+echo '<pre>'; var_dump($options); echo '</pre>'; die();
+
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -19,24 +28,29 @@
 
 <body <?php body_class(); ?>>
 	<?php do_action( 'before' ); ?>
-	
 
-		
+
+
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-logo" href="#">
-<img src="http://i.imm.io/1jwKr.png"/>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-          </a>
+            <?php if($theme_logo){ ?>
+            <a class="navbar-logo" href="#">
+                <img src="<?php echo $theme_logo; ?>" class="pull-left theme-logo" />
+            </a>
+            <?php } if($theme_logo_text){ ?>
+                    <div align="right" class="pull-right theme-logo-text"><?php echo $theme_logo_text; ?></div>
+            <?php }  ?>
+            <div class="clearfix"></div>
         </div>
-        <div class="">
+        <div>
              <?php wp_nav_menu(
 			                array(
 			                    'theme_location' => 'primary',
@@ -48,8 +62,8 @@
 			                )
 			            ); ?>
         </div><!--/.nav-collapse -->
-      </div>
     </div>
+</div>
 
 
 				   

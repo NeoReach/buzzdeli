@@ -88,7 +88,6 @@ function setup_framework_options(){
         'title' => 'Fork me on Github',
         'img' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_341_github.png'
     );
-    http://www.linkedin.com/company/rankexecutives
     $args['share_icons']['linked_in'] = array(
         'link' => 'http://www.linkedin.com/company/rankexecutives',
         'title' => 'Join me on LinkedIn',
@@ -99,7 +98,6 @@ function setup_framework_options(){
         'title' => 'Find me on Facebook',
         'img' => NHP_OPTIONS_URL.'img/glyphicons/glyphicons_320_facebook.png'
     );
-
     $args['share_icons']['twitter'] = array(
         'link' => 'https://twitter.com/rankexecutives',
         'title' => 'Follow me on Twitter',
@@ -367,8 +365,21 @@ function setup_framework_options(){
     global $NHP_Options;
     $NHP_Options = new NHP_Options($sections, $args, $tabs);
 
-}//function
-add_action('init', 'setup_framework_options', 0);
+}
+
+function load_theme_options()
+{
+    //global $options;
+    /*
+    global $NHP_Options;
+//echo '<pre>'; print_r($NHP_Options->options); echo '</pre>';
+    $options['theme_logo'] = !empty($NHP_Options->options['theme-logo']) ? $NHP_Options->options['theme-logo'] : null;
+    $options['theme_logo_text'] = !empty($NHP_Options->options['logo-text']) ? $NHP_Options->options['logo-text'] : null;
+*/
+    global $NHP_Options;
+    $options = $NHP_Options->options;
+
+}
 
 /*
  * 
@@ -379,7 +390,7 @@ function my_custom_field($field, $value){
     print_r($field);
     print_r($value);
 
-}//function
+}
 
 /*
  * 
@@ -409,6 +420,10 @@ function validate_callback_function($field, $value, $existing_value){
     return $return;
 
 }//function
+
+
+add_action('init', 'setup_framework_options', 0);
+add_action('_tk_header_top','load_theme_options', 0);
 
 /*
 

@@ -252,7 +252,7 @@ function setup_framework_options(){
                 'title' => __('Add code to the < head > of your site', 'nhp-opts'),
                 'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
                 'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
-                'std' => 'OOOOOOhhhh, rich editing.'
+                'std' => '<!-- start: custom head code --> <!-- end: custom head code -->'
             ),
             //Add code to the < body > (good tracking codes such as google analytics)
             array(
@@ -261,7 +261,7 @@ function setup_framework_options(){
                 'title' => __('Add code to the end of the < body > (good tracking codes such as google analytics)', 'nhp-opts'),
                 'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
                 'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
-                'std' => 'OOOOOOhhhh, rich editing.'
+                'std' => '<!-- start: custom body code --> <!-- end: custom body code -->'
             ),
             //Add code to the top of your posts
             array(
@@ -270,7 +270,7 @@ function setup_framework_options(){
                 'title' => __('Add code to the top of your posts', 'nhp-opts'),
                 'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
                 'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
-                'std' => 'OOOOOOhhhh, rich editing.'
+                'std' => '<!-- start: custom post top code --> <!-- end: custom post top code -->'
             ),
             //Add code to the bottom of your posts, before the comments
             array(
@@ -279,7 +279,7 @@ function setup_framework_options(){
                 'title' => __('Add code to the bottom of your posts, before the comments', 'nhp-opts'),
                 'sub_desc' => __('Can also use the validation methods if required', 'nhp-opts'),
                 'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
-                'std' => 'OOOOOOhhhh, rich editing.'
+                'std' => '<!-- start: custom post before code --> <!-- end: custom post before code -->'
             ),
         )
     );

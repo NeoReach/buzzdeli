@@ -5,14 +5,22 @@
 @green : #88c425;
 
 body {background-color:@primary}
+a{color:#67a500;}
+a:hover{color:#7ec30c;}
+a:visited{color:#67a500;}
 .navbar {background:transparent;}
-.navbar {background-color:@green}
+.navbar {background-color:@green;-webkit-box-shadow:  0px 0px 5px 1px rgba(50, 50, 50, 0.5); box-shadow:  0px 0px 5px 1px rgba(50, 50, 50, 0.5);border-bottom:3px solid #67a500;}
 .navbar-inverse .navbar-nav>li>a {color:@header-font;}
 .navbar-nav li a {color:@header-font;}
 .navbar .container {padding-bottom:0px;}
 .navbar-logo {float:left}
+header a{color:#cbff74;}
+header a:hover{color:#ffffff;}
 .main-content {margin-top:60px;}
-#colophon {background-color:@green; min-height:150px}
+footer {background-color:@green; color:#ffffff; min-height:150px; font-size:14px; padding:20px;
+  -webkit-box-shadow:  0px 0px 5px 1px rgba(50, 50, 50, 0.5); box-shadow:  0px 0px 5px 1px rgba(50, 50, 50, 0.5);border-top:3px solid #67a500;}
+footer a{color:#cbff74;}
+footer a:hover{color:#ffffff;}
 img.wp-post-image, .product .thumbnails img{.rounded(500px)}
 .center-product {text-align:center !important}
 .star-rating {margin:auto;}
@@ -25,7 +33,6 @@ img.wp-post-image, .product .thumbnails img{.rounded(500px)}
 }
 .woocommerce ul.products li.product .onsale, .woocommerce-page ul.products li.product 
 .onsale {margin:15px !important;}
-
 
 .woocommerce-ordering select {
     padding:3px;

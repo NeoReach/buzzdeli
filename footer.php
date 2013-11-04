@@ -6,6 +6,9 @@
  *
  * @package _tk
  */
+
+    if(is_single())
+        do_action('_tk_append_code_post');
 ?>
 			</div><!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
 		</div><!-- close .row -->
@@ -28,7 +31,10 @@
 	</div><!-- close .container -->
 </footer><!-- close #colophon -->
 
-<?php wp_footer(); ?>
+<?php
+wp_footer();
+do_action('_tk_append_code_body');
+?>
 
 </body>
 </html>

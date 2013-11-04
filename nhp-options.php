@@ -367,20 +367,6 @@ function setup_framework_options(){
 
 }
 
-function load_theme_options()
-{
-    //global $options;
-    /*
-    global $NHP_Options;
-//echo '<pre>'; print_r($NHP_Options->options); echo '</pre>';
-    $options['theme_logo'] = !empty($NHP_Options->options['theme-logo']) ? $NHP_Options->options['theme-logo'] : null;
-    $options['theme_logo_text'] = !empty($NHP_Options->options['logo-text']) ? $NHP_Options->options['logo-text'] : null;
-*/
-    global $NHP_Options;
-    $options = $NHP_Options->options;
-
-}
-
 /*
  * 
  * Custom function for the callback referenced above

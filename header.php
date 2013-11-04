@@ -6,7 +6,9 @@
  *
  * @package _tk
  */
-?><!DOCTYPE html>
+
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -19,13 +21,14 @@
 
 <body <?php body_class(); ?>>
 	<?php do_action( 'before' ); ?>
-	
 
-		
+
+
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+    <div class="container">
         <div class="navbar-header">
+
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -39,8 +42,9 @@
 do_action( 'get_logo' ); 
 ?>
           </a>
+
         </div>
-        <div class="">
+        <div>
              <?php wp_nav_menu(
 			                array(
 			                    'theme_location' => 'primary',
@@ -52,8 +56,8 @@ do_action( 'get_logo' );
 			                )
 			            ); ?>
         </div><!--/.nav-collapse -->
-      </div>
     </div>
+</div>
 
 
 				   

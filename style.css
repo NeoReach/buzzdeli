@@ -201,3 +201,10 @@ object {
 	display: block;
 } 
 */
+
+/* template */
+.navbar-header{width:100%;}
+
+/* Executive Theme Options CSS */
+.theme-logo{margin:0 15px 0 0;}
+.theme-logo-text{color:#fff;font-weight:600;margin:10px 0 0 0;text-transform: uppercase;}

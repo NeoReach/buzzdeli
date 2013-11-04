@@ -97,7 +97,7 @@ if ( ! function_exists( '_tk_append_code_head' ) ) {
     function _tk_append_code_head()
     {
         global $NHP_Options;
-        echo '<pre>'; print_r($NHP_Options->options); echo '</pre>';
+        //echo '<pre>'; print_r($NHP_Options->options); echo '</pre>';
         $code = !empty($NHP_Options->options['custom-code-head-append']) ? $NHP_Options->options['custom-code-head-append'] : null;
         echo $code;
     }
@@ -168,8 +168,9 @@ if ( ! function_exists( '_tk_body_class' ) ) {
     }
 }
 
-    function _tk_setup() {
-    global $cap, $content_width;
+    function _tk_setup()
+    {
+        global $cap, $content_width;
 
     // This theme styles the visual editor with editor-style.css to match the theme style.
     add_editor_style();
@@ -196,17 +197,17 @@ if ( ! function_exists( '_tk_body_class' ) ) {
 		
 		/**
 		 * Enable support for Post Formats
-		*/
+
 		add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-		
+         */
 		/**
 		 * Setup the WordPress core custom background feature.
-		*/
+
 		add_theme_support( 'custom-background', apply_filters( '_tk_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
-	
+         */
     }
 
 	/**

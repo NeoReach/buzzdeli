@@ -7,11 +7,20 @@
 body {
   background-color: #ffffff;
 }
+a {
+  color: #67a500;
+}
+a:hover {
+  color: #7ec30c;
+}
 .navbar {
   background: transparent;
 }
 .navbar {
   background-color: #88c425;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(50, 50, 50, 0.5);
+  box-shadow: 0px 0px 5px 1px rgba(50, 50, 50, 0.5);
+  border-bottom: 3px solid #67a500;
 }
 .navbar-inverse .navbar-nav > li > a {
   color: #ffffff;
@@ -25,12 +34,30 @@ body {
 .navbar-logo {
   float: left;
 }
+header a {
+  color: #cbff74;
+}
+header a:hover {
+  color: #ffffff;
+}
 .main-content {
   margin-top: 60px;
 }
-#colophon {
+footer {
   background-color: #88c425;
+  color: #ffffff;
   min-height: 150px;
+  font-size: 14px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(50, 50, 50, 0.5);
+  box-shadow: 0px 0px 5px 1px rgba(50, 50, 50, 0.5);
+  border-top: 3px solid #67a500;
+}
+footer a {
+  color: #cbff74;
+}
+footer a:hover {
+  color: #ffffff;
 }
 img.wp-post-image,
 .product .thumbnails img {

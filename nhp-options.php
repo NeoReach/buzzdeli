@@ -290,21 +290,135 @@ function setup_framework_options(){
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'nhp-opts'),
         'fields' => array(
             array(
+                'id' => 'color-text',
+                'type' => 'color',
+                'title' => __('Site Text Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#333333'
+            ),
+            array(
+                'id' => 'color-link',
+                'type' => 'color',
+                'title' => __('Site Link Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+            array(
+                'id' => 'color-link-hover',
+                'type' => 'color',
+                'title' => __('Site Link Hover Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#7ec30c'
+            ),
+            array(
+                'id' => 'color-link-visited',
+                'type' => 'color',
+                'title' => __('Site Link Visited Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+
+            array(
                 'id' => 'color-header-bg',
                 'type' => 'color',
                 'title' => __('Header Background Color', 'nhp-opts'),
-                'sub_desc' => __('Only color validation can be done on this field type', 'nhp-opts'),
-                'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#88c424'
+            ),
+            array(
+                'id' => 'color-header-bottom-border',
+                'type' => 'color',
+                'title' => __('Header Bottom Border Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+            array(
+                'id' => 'color-header-text',
+                'type' => 'color',
+                'title' => __('Header Text Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
                 'std' => '#FFFFFF'
+            ),
+            array(
+                'id' => 'color-header-link',
+                'type' => 'color',
+                'title' => __('Header Link Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+            array(
+                'id' => 'color-header-link-hover',
+                'type' => 'color',
+                'title' => __('Header Link Hover Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#7ec30c'
+            ),
+            array(
+                'id' => 'color-header-link-visited',
+                'type' => 'color',
+                'title' => __('Header Link Visited Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
             ),
             array(
                 'id' => 'color-footer-bg',
                 'type' => 'color',
                 'title' => __('Footer Background Color', 'nhp-opts'),
-                'sub_desc' => __('Only color validation can be done on this field type', 'nhp-opts'),
-                'desc' => __('This is the description field, again good for additional info.', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#88c424'
+            ),
+            array(
+                'id' => 'color-footer-border-top',
+                'type' => 'color',
+                'title' => __('Footer Border Top Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+            array(
+                'id' => 'color-footer-text',
+                'type' => 'color',
+                'title' => __('Footer Text Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
                 'std' => '#FFFFFF'
             ),
+            array(
+                'id' => 'color-footer-link',
+                'type' => 'color',
+                'title' => __('Footer Link Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+            array(
+                'id' => 'color-footer-link-hover',
+                'type' => 'color',
+                'title' => __('Footer Link Hover Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#7ec30c'
+            ),
+            array(
+                'id' => 'color-footer-link-visited',
+                'type' => 'color',
+                'title' => __('Footer Link Visited Color', 'nhp-opts'),
+                'sub_desc' => __('', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'std' => '#67a500'
+            ),
+
         )
     );
 

@@ -13,6 +13,9 @@ a {
 a:hover {
   color: #7ec30c;
 }
+a:visited {
+  color: #67a500;
+}
 .navbar {
   background: transparent;
 }

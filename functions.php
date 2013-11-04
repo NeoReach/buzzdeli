@@ -135,17 +135,70 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
     {
         global $NHP_Options;
         $css = null;
-        $color_header_bg = !empty($NHP_Options->options['color-header-bg']) ? $NHP_Options->options['color-header-bg'] : null;
-        $color_footer_bg = !empty($NHP_Options->options['color-footer-bg']) ? $NHP_Options->options['color-footer-bg'] : null;
+        //echo '<pre>'; print_r($NHP_Options->options); echo '</pre>';
+        /*
 
+        */
+        $color_text = !empty($NHP_Options->options['color-text']) ? $NHP_Options->options['color-text'] : null;
+        $color_link = !empty($NHP_Options->options['color-link']) ? $NHP_Options->options['color-link'] : null;
+        $color_link_hover = !empty($NHP_Options->options['color-link-hover']) ? $NHP_Options->options['color-link-hover'] : null;
+        $color_link_visited = !empty($NHP_Options->options['color-link-visited']) ? $NHP_Options->options['color-link-visited'] : null;
+        $color_header_bg = !empty($NHP_Options->options['color-header-bg']) ? $NHP_Options->options['color-header-bg'] : null;
+        $color_header_bottom_border = !empty($NHP_Options->options['color-header-bottom-border']) ? $NHP_Options->options['color-header-bottom-border'] : null;
+        $color_header_text = !empty($NHP_Options->options['color-header-text']) ? $NHP_Options->options['color-header-text'] : null;
+        $color_header_link = !empty($NHP_Options->options['color-header-link']) ? $NHP_Options->options['color-header-link'] : null;
+        $color_header_link_hover = !empty($NHP_Options->options['color-header-link-hover']) ? $NHP_Options->options['color-header-link-hover'] : null;
+        $color_header_link_visited = !empty($NHP_Options->options['color-header-link-visited']) ? $NHP_Options->options['color-header-link-visited'] : null;
+        $color_footer_bg = !empty($NHP_Options->options['color-footer-bg']) ? $NHP_Options->options['color-footer-bg'] : null;
+        $color_footer_border_top = !empty($NHP_Options->options['color-footer-border-top']) ? $NHP_Options->options['color-footer-border-top'] : null;
+        $color_footer_text = !empty($NHP_Options->options['color-footer-text']) ? $NHP_Options->options['color-footer-text'] : null;
+        $color_footer_link = !empty($NHP_Options->options['color-footer-link']) ? $NHP_Options->options['color-footer-link'] : null;
+        $color_footer_link_hover = !empty($NHP_Options->options['color-footer-link-hover']) ? $NHP_Options->options['color-footer-link-hover'] : null;
+        $color_footer_link_visited = !empty($NHP_Options->options['color-footer-link-visited']) ? $NHP_Options->options['color-footer-link-visited'] : null;
+/*
+ * a{color:#67a500;}
+a:hover{color:#7ec30c;}
+a:visited{color:#67a500;}
+ */
+        //global
+        if($color_text)
+           $css .= '.main-content{color:'.$color_text.';}';
+        if($color_link)
+            $css .= 'a{color:'.$color_link.';}';
+        if($color_link_hover)
+            $css .= 'a:hover{color:'.$color_link_hover.';}';
+        if($color_link_visited)
+            $css .= 'a:visited{color:'.$color_link_visited.';}';
+
+        //header
         if($color_header_bg)
             $css .= '.navbar{background-color:'.$color_header_bg.'!important;}';
+        if($color_footer_border_top)
+            $css .= '.navbar{border-bottom:3px solid '.$color_footer_border_top.'!important;}';
+        if($color_header_text)
+            $css .= '.navbar a{color:'.$color_header_text.'!important;}';
+        if($color_header_link)
+            $css .= '.navbar a{color:'.$color_link.'!important;}';
+        if($color_header_link_hover)
+            $css .= '.navbar a:hover{color:'.$color_link_hover.'!important;}';
+        if($color_header_link_visited)
+            $css .= '.navbar a:visited{color:'.$color_link_visited.'!important;}';
 
+        //footer
         if($color_footer_bg)
-            $css .= '#colophon{background-color:'.$color_footer_bg.'!important;}';
+            $css .= 'footer{background-color:'.$color_footer_bg.'!important;}';
+        if($color_header_bottom_border)
+            $css .= 'footer{bottom-top:3px solid '.$color_header_bottom_border.'!important;}';
+        if($color_footer_text)
+            $css .= 'footer a{color:'.$color_footer_text.'!important;}';
+        if($color_footer_link)
+            $css .= 'footer a{color:'.$color_footer_link.'!important;}';
+        if($color_footer_link_hover)
+            $css .= 'footer a:hover{color:'.$color_footer_link_hover.'!important;}';
+        if($color_footer_link_visited)
+            $css .= 'footer a:visited{color:'.$color_footer_link_visited.'!important;}';
 
-        echo '<!--start: custom css --><style type="text/css">'.$css.
-             '</style><!-- end: custom css -->';
+        echo '<!--start: custom css --><style type="text/css">'.$css.'</style><!-- end: custom css -->';
     }
 }
 

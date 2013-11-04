@@ -638,7 +638,7 @@ class NHP_Options{
 				
 				echo '<input type="hidden" id="last_tab" name="'.$this->args['opt_name'].'[last_tab]" value="'.$this->options['last_tab'].'" />';
 				echo '<div id="nhp-opts-header">'.
-                    '<div class="options-logo"><img src="'. FRESH_DELI_OPTIONS.'/img/executive-options-logo.png" width="164px" height="32px" alt="Executive Options" /></div>';
+                    '<div class="options-logo"><img src="'. FRESH_DELI_OPTIONS.'img/executive-options-logo.png" width="164px" height="32px" alt="Executive Options" /></div>';
 					submit_button('', 'primary', '', false);
 					submit_button(__('Reset to Defaults', 'nhp-opts'), 'secondary', $this->args['opt_name'].'[defaults]', false);
 					echo '<div class="clear"></div><!--clearfix-->';

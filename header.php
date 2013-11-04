@@ -16,32 +16,30 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php wp_head(); ?>
+<?php
+wp_head();
+do_action('_tk_set_custom_css');
+do_action('_tk_append_code_head');
+?>
 </head>
 
 <body <?php body_class(); ?>>
-	<?php do_action( 'before' ); ?>
-
-
-
+<?php do_action( 'before' );?>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-logo" href="#">
-
-
-<?php
-
-do_action( 'get_logo' ); 
-?>
-          </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <?php
+                do_action('_tk_get_logo');
+                do_action('_tk_get_logo_text');
+            ?>
+            <div class="clearfix"></div>
 
         </div>
         <div>
@@ -59,11 +57,10 @@ do_action( 'get_logo' );
     </div>
 </div>
 
-
-				   
-				
-
-
 <div class="main-content">	
 	<div class="container">
 		<div class="row">
+        <?php
+            if(is_single())
+                do_action('_tk_prepend_code_post');
+        ?>

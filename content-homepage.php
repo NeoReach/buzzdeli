@@ -9,13 +9,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="entry-content">
 		<div class="row">
-				<div class="mid-section col-6 col-lg-6">
+				<div class="mid-section col-12 col-lg-12">
 <?php
-do_shortcode('flexslider');
+echo do_shortcode('[flexslider]');
 ?>
-				</div>
-				<div class="mid-section col-6 col-lg-6">
-
 				</div>
 
 		</div>

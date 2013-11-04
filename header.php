@@ -7,13 +7,6 @@
  * @package _tk
  */
 
-/**
- * Set Executive Theme Options
- */
-do_action('_tk_header_top');
-
-echo '<pre>'; var_dump($options); echo '</pre>'; die();
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

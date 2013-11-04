@@ -1,18 +1,17 @@
 <?php
+/*
+ * Template Name: No Sidebar
+ */
+
 /**
- * The Template for displaying all single posts.
- *
  * @package _tk
  */
 
 get_header(); ?>
-			<div class="main-content-inner col-9 col-lg-9">
-
+			<div class="main-content-inner col-12 col-md-12 col-lg-12">
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'content', 'single' ); ?>
-
-		<?php _tk_content_nav( 'nav-below' ); ?>
+		<?php get_template_part( 'content', 'page' ); ?>
 
 		<?php
 			// If comments are open or we have at least one comment, load up the comment template
@@ -21,9 +20,7 @@ get_header(); ?>
 		?>
 
 	<?php endwhile; // end of the loop. ?>
-</div>
-			<div class="main-content-inner col-3 col-lg-3">
 
-<?php get_sidebar(); ?>
 </div>
+
 <?php get_footer(); ?>

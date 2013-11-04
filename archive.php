@@ -10,6 +10,9 @@
 get_header(); ?>
 
 	<?php // add the class "panel" below here to wrap the content-padder in Bootstrap style ;) ?>	
+	
+					<div class="main-content-inner col-9 col-lg-9">
+
 	<div class="content-padder">
 		
 		<?php if ( have_posts() ) : ?>
@@ -96,6 +99,8 @@ get_header(); ?>
 		<?php endif; ?>
 	
 	</div><!-- .content-padder -->
-			
+		</div>
+							<div class="main-content-inner col-3 col-lg-3">	
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

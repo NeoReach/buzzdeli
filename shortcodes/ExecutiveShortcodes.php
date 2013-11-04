@@ -1,21 +1,41 @@
 <?php
-class RankExecutive_ShortCodes {
+/**
+ * @package RankExecutive
+ */
+/*
+Plugin Name: Executive Short Codes
+Plugin URI: http://rankexecutives.com
+Description: Bootstrap Shortcodes
+Version: 1
+Author: RankExecutives
+Author URI: http://rankexecutives.com
+*/
+
+class RankExecutive_ShortCodes 
+{
   function __construct()
   {
     add_action('media_buttons',array(&$this,'select_grid'),11);
 add_shortcode( 'grid', array(&$this,'get_grid' ));
 add_shortcode( 'row', array(&$this,'get_row' ));
 add_shortcode( 'button', array(&$this,'get_button' ));
+add_shortcode( 'alert', array(&$this,'get_alert' ));
+  }
+  function get_alert($attr, $text)
+  {
+       extract( shortcode_atts(
+    array(
+      'type' => 'red',
+    ), $attr )
+  );
 
-add_action('admin_head', array(&$this,'button_js'));
-
+return "<div class='alert alert-".$type."'>".$text."</div>";
   }
   function get_button($attr)
   {
       extract( shortcode_atts(
     array(
       'color' => 'red',
-      'size'=>'small',
       'link'=>'#',
       'text'=>'button',
       'col' => 0,
@@ -65,7 +85,7 @@ function get_grid($attr, $text)
       'col' => 0,
     ), $attr )
   );
-    return "<div class='".$target." col-".$col."'>".$text."</div>";
+    return "<div class='".$target." col-".$col."'>".do_shortcode($text)."</div>";
 }
 function get_row($attr, $content)
 {
@@ -74,7 +94,7 @@ function get_row($attr, $content)
 function select_grid(){  
 ?>
     <select id="grid_select">
-                        <option>SelGrid</option>
+                        <option>Grid</option>
                         <option value="[row][/row]">row</option>
                       <option value="[grid col='1'][/grid]">grid 1</option>
                       <option value="[grid col='2'][/grid]">grid 2</option>
@@ -92,31 +112,28 @@ function select_grid(){
         </select>
             <select id="grid_button">
                         <option>Buttons</option>
-                      <option value="[button color='default' size='small' link='#' text='button']">default</option>
-                      <option value="[button color='primary' size='small' link='#' text='button']">primary</option>
-                      <option value="[button color='success' size='small' link='#' text='button']">green</option>
-                      <option value="[button color='blue' size='small' link='#' text='button']">blue</option>
-                      <option value="[button color='orange' size='small' link='#' text='button']">orange</option>
-                      <option value="[button color='red' size='small' link='#' text='button']">red</option>
+                      <option value="[button color='default' link='#' text='button']">default</option>
+                      <option value="[button color='primary'  link='#' text='button']">primary</option>
+                      <option value="[button color='green'  link='#' text='button']">green</option>
+                      <option value="[button color='blue'  link='#' text='button']">blue</option>
+                      <option value="[button color='orange'  link='#' text='button']">orange</option>
+                      <option value="[button color='red'  link='#' text='button']">red</option>
 
         </select>
+                 <select id="grid_alert">
+                        <option>Alerts</option>
+                      <option value="[alert type='success'][/alert]">success</option>
+                       <option value="[alert type='info'][/alert]">info</option>
+                        <option value="[alert type='warning'][/alert]">warning</option>
+                         <option value="[alert type='danger'][/alert]">danger</option>
+
+
+        </select>
+
         <?php
 
 }
-function button_js() {
-       // echo '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-        echo '<script type="text/javascript">'.
-        'jQuery(document).ready(function(){'.
-           '$("#grid_select, #grid_button").change(function() {'.
-            'var val = $(this).find(":selected").val();'.
-            'console.log(val);'.
-            '$("#content").val($("#content").val()+val);})'.
-        '});'.
-        '</script>';
 }
-}
-
 $RankExecutive_ShortCodes = new RankExecutive_ShortCodes();
-
 
 

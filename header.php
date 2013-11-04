@@ -32,8 +32,12 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-logo" href="#">
-<img src="http://i.imm.io/1jwKr.png"/>
 
+
+<?php
+
+do_action( 'get_logo' ); 
+?>
           </a>
         </div>
         <div class="">

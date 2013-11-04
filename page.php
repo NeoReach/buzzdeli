@@ -14,7 +14,15 @@ get_header(); ?>
 			<div class="main-content-inner col-12 col-lg-12">
 	<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'content', 'page' ); ?>
+		<?php 
+		if(is_front_page() || is_home())
+		{
+		get_template_part( 'content', 'page' );
+	}else{
+		get_template_part( 'content', 'homepage' );
+	}
+
+		?>
 
 		<?php
 			// If comments are open or we have at least one comment, load up the comment template

@@ -25,15 +25,21 @@ if ( ! function_exists( '_tk_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
-include('scroll/scroll.php');
-include('shortcodes/ExecutiveShortCodes.php');
-define('FRESH_DELI_DIR_URI',get_template_directory_uri());
-define('FRESH_DELI_OPTIONS',FRESH_DELI_DIR_URI.'/options/');
-define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_URI.'/shortcodes/');
-define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_URI.'/scroll/');
+
+define('FRESH_DELI_DIR_PATH',get_template_directory()."/");
+define('FRESH_DELI_DIR_URI',get_template_directory_uri()."/");
+define('FRESH_DELI_OPTIONS',FRESH_DELI_DIR_PATH.'/options/');
+define('FRESH_DELI_SHORTCODES',FRESH_DELI_DIR_PATH.'/shortcodes/');
+define('FRESH_DELI_SCROLL',FRESH_DELI_DIR_PATH.'/scroll/');
+define('FRESH_DELI_SLIDER',FRESH_DELI_DIR_PATH.'/slider/');
 define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'/includes/css/');
 define('FRESH_DELI_JS',FRESH_DELI_DIR_URI.'/includes/js/');
 define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'/includes/img/');
+include(FRESH_DELI_SCROLL.'scroll.php');
+include(FRESH_DELI_SHORTCODES.'ExecutiveShortCodes.php');
+include(FRESH_DELI_SLIDER.'flexslider.php');
+
+
 add_action( 'admin_enqueue_scripts', '_tk_admin_scripts' );
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 
@@ -256,6 +262,14 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loo
 			
 			return $output;
 	}
+ }
+ if ( ! function_exists( 'get_slider' ) ) {
+ function get_slider()
+ {
+
+
+ }
+
  }
 
 

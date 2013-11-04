@@ -1,36 +1,9 @@
 <?php
-/**
- * Plugin Name: Responsive Slider for Developers
- * Plugin URI: http://halgatewood.com/flexslider-hg
- * Description: An admin interface that uses WooThemes Flexslider on the frontend. Designed for developers to easily add image rotators that their clients can easily maintain.
- * Version: 1.3.1
- * Author: Hal Gatewood
- * Author URI: http://halgatewood.com
- 
- 
- 	Based off DevPress's Responsive Slider and using WooThemes Flexslider. 
- 	
- 	http://wordpress.org/extend/plugins/responsive-slider/
- 	http://www.woothemes.com/flexslider/
- 	
- 	SIMPLE USAGE:
- 	
-	function set_flexslider_hg_rotators( $rotators = array() )
-	{
-	    $rotators['homepage'] 		= array( 'size' => 'large', 'heading_tag' => 'h1' );
-	    $rotators['contactus'] 		= array( 'size' => 'thumbnail' );
-	    $rotators['gallerypage'] 	= array( 'size' => 'medium', 'hide_slide_data' => true );
-	    $rotators['amenities'] 		= array( 'size' => 'your-custom-size', 'limit' => 5 );
-	    return $rotators;
-	}
-	add_filter('flexslider_hg_rotators', 'set_flexslider_hg_rotators');
- 
-*/
+
 
 
 /* SETUP */
-add_action( 'plugins_loaded', 'flexslider_hg_setup' );
-define( 'FLEXSLIDER_HG_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'FLEXSLIDER_HG_URI', FRESH_DELI_SLIDER);
 
 
 // GET ROTATORS:
@@ -44,9 +17,6 @@ function flexslider_hg_rotators()
 }
 
 
-// SETUP ACTIONS
-function flexslider_hg_setup()
-{
 	add_action( 'init', 'flexslider_hg_setup_init' );
 	add_action( 'admin_head', 'flexslider_hg_admin_icon' );	
 	add_action( 'wp_enqueue_scripts', 'flexslider_wp_enqueue' );	
@@ -58,7 +28,7 @@ function flexslider_hg_setup()
 	add_action( 'manage_slides_posts_custom_column', 'flexslider_hg_add_columns' );
 	
 	add_shortcode('flexslider', 'flexslider_hg_shortcode');
-}
+
 
 
 // INIT

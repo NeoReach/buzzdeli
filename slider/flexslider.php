@@ -260,7 +260,7 @@ function flexslider_hg_add_columns( $column )
 // SHORTCODE
 function flexslider_hg_shortcode($atts, $content = null)
 {
-	$slug = isset($atts['slug']) ? $atts['slug'] : "attachments";
+	$slug = isset($atts['slug']) ? $atts['slug'] : "homepage";
 	if(!$slug) { return apply_filters( 'flexslider_hg_empty_shortcode', "<p>Flexslider: Please include a 'slug' parameter. [flexslider slug=homepage]</p>" ); }
 	return show_flexslider_rotator( $slug );
 }

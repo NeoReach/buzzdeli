@@ -10,9 +10,8 @@
 	<div class="entry-content">
 		<div class="row">
 				<div class="mid-section col-6 col-lg-6">
-					test
 <?php
-do_shortcode('flexslider_hg_shortcode' );
+do_shortcode('flexslider');
 ?>
 				</div>
 				<div class="mid-section col-6 col-lg-6">

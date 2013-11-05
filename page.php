@@ -18,6 +18,8 @@ get_header(); ?>
 		if(is_front_page() || is_home())
 		{
 		get_template_part( 'content', 'homepage' );
+		get_sidebar('homepage');
+
 	}else{
 		get_template_part( 'content', 'page' );
 	}

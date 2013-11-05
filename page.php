@@ -17,11 +17,10 @@ get_header(); ?>
 		<?php 
 		if(is_front_page() || is_home())
 		{
-		get_template_part( 'content', 'homepage' );
-		get_sidebar('homepage');
+		get_template_part( 'template-parts/content', 'homepage' );
 
 	}else{
-		get_template_part( 'content', 'page' );
+		get_template_part( 'template-parts/content', 'page' );
 	}
 
 		?>

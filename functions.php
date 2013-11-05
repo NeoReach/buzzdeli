@@ -281,19 +281,7 @@ if ( ! function_exists( '_tk_body_class' ) ) {
 		*/
 		add_theme_support( 'post-thumbnails' );
 		
-		/**
-		 * Enable support for Post Formats
 
-		add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
-         */
-		/**
-		 * Setup the WordPress core custom background feature.
-
-		add_theme_support( 'custom-background', apply_filters( '_tk_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
-         */
     }
 
 	/**

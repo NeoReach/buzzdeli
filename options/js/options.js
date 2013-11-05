@@ -91,8 +91,29 @@ jQuery(document).ready(function(){
 	});
 	
 	
-    /* custom code added by Daniel Moret 11.5.2013 */
-	jQuery('#homepage-featured-content').
+    /* Custom code added by Daniel Moret 11.5.2013 */
+
+    /**
+     * Display homepage featured content select fields
+     *
+     * @values  0=>None 1=>Latest Post, 2=>Static Page, 3=>Custom Widgets
+     */
+	jQuery('#homepage-featured-content').on('change',function(){
+        var select_field = jQuery(this);
+        var content_type = jQuery(this).val();
+        switch(content_type)
+        {
+            case 0:
+                //select_field.parent().append(select_field);
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3: 
+                break;
+        }
+    });
 	
 	
 });

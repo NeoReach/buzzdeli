@@ -11,10 +11,10 @@
 		<div class="row">
 				<div class="mid-section col-12 col-lg-12">
 <?php
-echo do_shortcode('[flexslider]');
+        echo do_shortcode('[flexslider]');
 ?>
 				</div>
-
+<?php do_shortcode('homepage_featured_content'); ?>
 		</div>
 
 		<?php the_content(); ?>

@@ -185,17 +185,17 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
 
         //footer
         if($color_footer_bg)
-            $css .= 'footer{background-color:'.$color_footer_bg.'!important;}';
+            $css .= '#colophon{background-color:'.$color_footer_bg.'!important;}';
         if($color_header_bottom_border)
-            $css .= 'footer{bottom-top:3px solid '.$color_header_bottom_border.'!important;}';
+            $css .= '#colophon{bottom-top:3px solid '.$color_header_bottom_border.'!important;}';
         if($color_footer_text)
-            $css .= 'footer a{color:'.$color_footer_text.'!important;}';
+            $css .= '#colophon a{color:'.$color_footer_text.'!important;}';
         if($color_footer_link)
-            $css .= 'footer a{color:'.$color_footer_link.'!important;}';
+            $css .= '#colophon a{color:'.$color_footer_link.'!important;}';
         if($color_footer_link_hover)
-            $css .= 'footer a:hover{color:'.$color_footer_link_hover.'!important;}';
+            $css .= '#colophon a:hover{color:'.$color_footer_link_hover.'!important;}';
         if($color_footer_link_visited)
-            $css .= 'footer a:visited{color:'.$color_footer_link_visited.'!important;}';
+            $css .= '#colophon a:visited{color:'.$color_footer_link_visited.'!important;}';
 
         echo '<!--start: custom css --><style type="text/css">'.$css.'</style><!-- end: custom css -->';
     }

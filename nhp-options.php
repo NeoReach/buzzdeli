@@ -203,6 +203,15 @@ function setup_framework_options(){
                                         'std' => '0'
                                     ),
                                     array(
+                                        'id' => 'homepage-featured-content-page',
+                                        'type' => 'pages_select',
+                                        'title' => __('Homepage Featured Content Page', 'nhp-opts'),
+                                        'sub_desc' => __('* "Homepage Featured Content" must be set to "Static Page"', 'nhp-opts'),
+                                        'desc' => __('', 'nhp-opts'),
+                                        'args' => array(),//uses get_pages
+
+                                    ),
+                                    array(
                                         'id' => 'theme-font',
                                         'type' => 'google_webfonts',//doesnt need to be called for callback fields
                                         'title' => __('Custom Google Webfonts', 'nhp-opts'),

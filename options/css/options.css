@@ -445,6 +445,8 @@ border: 1px solid #e5e5e5;
 .options-icon-import-export:hover{background-position: -30px -127px;}
 .options-icon-theme-info{background-position: 0 -156px; width: 30px; height: 28px;}
 .options-icon-theme-info:hover{background-position: -30px -156px;}
+.options-icon-slider{background-position: 0 -183px; width: 30px; height: 20px;}
+.options-icon-slider:hover{background-position: -30px -183px;}
 
 .clear{clear:both;}
 

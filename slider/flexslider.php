@@ -21,7 +21,18 @@ function flexslider_hg_rotators()
 function flexslider_hg_setup_init()
 {
 	// 'SLIDES' POST TYPE
-	$labels = array( 'name' => __( 'Slides', 'flexslider_hg' ), 'singular_name' => __( 'Slide', 'flexslider_hg' ), 'all_items' => __( 'All Slides', 'flexslider_hg' ), 'add_new' => __( 'Add New Slide', 'flexslider_hg' ), 'add_new_item' => __( 'Add New Slide', 'flexslider_hg' ), 'edit_item' => __( 'Edit Slide', 'flexslider_hg' ), 'new_item' => __( 'New Slide', 'flexslider_hg' ),'view_item' => __( 'View Slide', 'flexslider_hg' ),'search_items' => __( 'Search Slides', 'flexslider_hg' ),'not_found' => __( 'No Slide found', 'flexslider_hg' ), 'not_found_in_trash' => __( 'No Slide found in Trash', 'flexslider_hg' ), 'parent_item_colon' => '' );
+	$labels = array(
+        'name' => __( 'Slides', 'flexslider_hg' ),
+        'singular_name' => __( 'Slide', 'flexslider_hg' ),
+        'all_items' => __( 'All Slides', 'flexslider_hg' ),
+        'add_new' => __( 'Add New Slide', 'flexslider_hg' ),
+        'add_new_item' => __( 'Add New Slide', 'flexslider_hg' ),
+        'edit_item' => __( 'Edit Slide', 'flexslider_hg' ),
+        'new_item' => __( 'New Slide', 'flexslider_hg' ),
+        'view_item' => __( 'View Slide', 'flexslider_hg' ),
+        'search_items' => __( 'Search Slides', 'flexslider_hg' ),
+        'not_found' => __( 'No Slide found', 'flexslider_hg' ),
+        'not_found_in_trash' => __( 'No Slide found in Trash', 'flexslider_hg' ), 'parent_item_colon' => '' );
 	
 	$args = array(
 		'labels'               => $labels,

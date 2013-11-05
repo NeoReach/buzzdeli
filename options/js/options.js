@@ -91,8 +91,8 @@ jQuery(document).ready(function(){
 	});
 	
 	
-
-	
+    /* custom code added by Daniel Moret 11.5.2013 */
+	jQuery('#homepage-featured-content').
 	
 	
 });

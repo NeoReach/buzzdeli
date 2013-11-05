@@ -177,7 +177,6 @@ function setup_framework_options(){
                                         'sub_desc' => __('upload your custom logo.', 'nhp-opts'),
                                         'desc' => __('', 'nhp-opts')
                                     ),
-
                                     array(
                                         'id' => 'logo-text', //must be unique
                                         'type' => 'text', //builtin fields include:
@@ -190,7 +189,19 @@ function setup_framework_options(){
                                         //'std' => '', //This is a default value, used to set the options on theme activation, and if the user hits the Reset to defaults Button
                                         //'class' => '' //Set custom classes for elements if you want to do something a little different - default is "regular-text"
                                     ),
-
+                                    array(
+                                        'id' => 'homepage-featured-content',
+                                        'type' => 'select',
+                                        'title' => __('Homepage Featured Content', 'nhp-opts'),
+                                        'sub_desc' => __('content under slider', 'nhp-opts'),
+                                        'desc' => __('', 'nhp-opts'),
+                                        'options' => array(
+                                            '0' => 'None',
+                                            '1' => 'Latest Post',
+                                            '2' => 'Static Page',
+                                            '3' => 'Custom Widgets'),
+                                        'std' => '0'
+                                    ),
                                     array(
                                         'id' => 'theme-font',
                                         'type' => 'google_webfonts',//doesnt need to be called for callback fields
@@ -198,13 +209,46 @@ function setup_framework_options(){
                                         'sub_desc' => __('upload google webfont.', 'nhp-opts'),
                                         'desc' => __('', 'nhp-opts')
                                     )
-
-
-
-                    )
+                                )
                             );
 
+    $sections[] = array(
+        'title' => __('Featured Slider', 'nhp-opts'),
+        'desc' => __('<p class="description">Adjust slider settings such as: set slider on/off, slider title on/off, and more</p>', 'nhp-opts'),
+        'icon' => 'options-icon-slider',
+        'fields' =>  array(
+                        // 1 = on | 0 = off
+                        array(
+                            'id' => 'featured-slider',
+                            'type' => 'checkbox',
+                            'title' => __('Featured Slider On/Off', 'nhp-opts'),
+                            'sub_desc' => __('toggle the featured slider - on or off', 'nhp-opts'),
+                            'desc' => __('', 'nhp-opts'),
+                            'std' => '1'
+                        ),
+                        array(
+                            'id' => 'featured-slider-title',
+                            'type' => 'checkbox',
+                            'title' => __('Featured Slider Title On/Off', 'nhp-opts'),
+                            'sub_desc' => __('toggle slider title display - on or off', 'nhp-opts'),
+                            'desc' => __('', 'nhp-opts'),
+                            'std' => '1'
+                        ),
+                        array(
+                            'id' => 'featured-slider-display-type',
+                            'type' => 'select',
+                            'title' => __('Featured Slider Display Type', 'nhp-opts'),
+                            'sub_desc' => __('', 'nhp-opts'),
+                            'desc' => __('', 'nhp-opts'),
+                            'options' => array(
+                                '1' => 'Window',
+                                '2' => 'Fullscreen'),
+                                //'3' => 'Opt 3'),
+                            'std' => '1'
+                        ),
 
+                    )
+    );
 
     $sections[] = array(
         'icon' => 'options-icon-layout',

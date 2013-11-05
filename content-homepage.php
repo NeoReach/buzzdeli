@@ -14,7 +14,7 @@
         echo do_shortcode('[flexslider]');
 ?>
 				</div>
-<?php do_shortcode('homepage_featured_content'); ?>
+<?php do_action('_tk_homepage_featured_content'); ?>
 		</div>
 
 		<?php the_content(); ?>

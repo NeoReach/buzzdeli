@@ -50,6 +50,7 @@ add_action( 'wp_enqueue_scripts', '_tk_scripts' );
 //general
 add_action('_tk_get_logo','_tk_get_logo');
 add_action('_tk_get_logo_text','_tk_get_logo_text');
+add_action('_tk_homepage_featured_content','_tk_homepage_featured_content');
 
 //layout
 add_action('_tk_append_code_head','_tk_append_code_head');
@@ -91,6 +92,39 @@ if ( ! function_exists( '_tk_get_logo_text' ) ) {
             $html .= '<div align="right" class="pull-right theme-logo-text">'. $theme_logo_text .'</div>';
 
         echo $html;
+    }
+}
+
+    /**
+     * Homepage Featured Content
+     *
+     * @options  0 => None, 1 => Latest Post, 2 => Static Page, 3 => Custom Widgets
+     */
+if(!function_exists('_tk_homepage_featured_content'))
+{
+    function _tk_homepage_featured_content()
+    {
+        global $NHP_Options;
+        $content = !empty($NHP_Options->options['homepage-featured-content']) ? $NHP_Options->options['homepage-featured-content'] : null;
+        $page_id = !empty($NHP_Options->options['homepage-featured-content-page']) ? $NHP_Options->options['homepage-featured-content-page'] : null;
+
+        switch($content)
+        {
+            case 1:
+
+                break;
+            case 2:
+                $page = get_post($page_id,'ARRAY_A');
+               //echo '$page_id:<pre>'; print_r($page_id); echo '</pre>';
+                //echo '$page: <pre>'; print_r($page); echo '</pre>'; die();
+                echo $page['post_content'];
+                break;
+            case 3:
+
+                break;
+        }
+
+
     }
 }
 

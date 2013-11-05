@@ -352,10 +352,12 @@ function _tk_admin_scripts()
 
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('_tk-backendjs', FRESH_DELI_JS.'backend.js', array('jquery') );
+       wp_enqueue_style( 'options-panel', FRESH_DELI_CSS.'options-panel.css');
 
 
 
 }
+
 function _tk_scripts() {
 	
 

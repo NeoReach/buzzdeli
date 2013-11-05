@@ -1,0 +1,48 @@
+<div id="featured-content-container">
+    <div class="featured-item-container col-4">
+        <div class="featured-item first">
+            <div class="divider"></div>
+            <div class="text-container ">
+                <div class="text yellow">Order</div>
+                <div class="text-shadow yellow">Order</div>
+            </div>
+            <div class="divider"></div>
+            <div class="sub-text-container">
+                <div class="sub-text">TO-GO</div>
+                <div class="icon-arrow-yellow"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-item-container col-4">
+        <div class="featured-item second">
+            <div class="divider"></div>
+            <div class="text-container">
+                <div class="text green">Organic</div>
+                <div class="text-shadow green">Organic</div>
+            </div>
+            <div class="divider"></div>
+            <div class="sub-text-container">
+                <div class="sub-text">
+                    We only use 100% all natural ingredients
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-item-container col-4">
+        <div class="featured-item third">
+            <div class="divider"></div>
+            <div class="text-container">
+                <div class="text brown">Catering</div>
+                <div class="text-shadow brown">Catering</div>
+            </div>
+            <div class="divider"></div>
+            <div class="sub-text-container">
+                <div class="sub-text">View Services</div>
+                <div class="icon-arrow-brown"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

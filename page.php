@@ -10,28 +10,37 @@
  * @package _tk
  */
 
-get_header(); ?>
-			<div class="main-content-inner col-12 col-lg-12">
-	<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php 
-		if(is_front_page() || is_home())
-		{
-		get_template_part( 'template-parts/content', 'homepage' );
+//get default page template
+$default_template = _tk_get_default_template('default-page-layout');
 
-	}else{
-		get_template_part( 'template-parts/content', 'page' );
-	}
+//echo '<pre>'; print_r($default_template); echo '</pre>';
 
-		?>
+get_header();
 
-		<?php
-			// If comments are open or we have at least one comment, load up the comment template
-			if ( comments_open() || '0' != get_comments_number() )
-				comments_template();
-		?>
+if($default_template['sidebar'])
+    echo $default_template['sidebar'];
 
-	<?php endwhile; // end of the loop. ?>
+?>
 
+<div class="<?php echo $default_template['class']; ?>">
+<?php
+
+    while ( have_posts() ) {
+
+        the_post();
+
+        if(is_front_page() || is_home())
+            get_template_part( 'template-parts/content', 'homepage' );
+        else
+            get_template_part( 'template-parts/content', 'page' );
+
+        //comments
+        if ( comments_open() || '0' != get_comments_number()){
+            if(!is_front_page())
+                comments_template();
+        }
+    } // end of the loop.
+?>
 </div>
 <?php get_footer(); ?>

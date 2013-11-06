@@ -109,7 +109,7 @@ img.wp-post-image,
 .woocommerce-tabs .panel {
   padding: 10px !important;
 }
-/* homepage featured content */
+/* homepage featured content - custom pages */
 #featured-content-container .featured-item-container {
   background: #e6e6e6;
   height: 170px;
@@ -224,4 +224,33 @@ img.wp-post-image,
   background: url(../resources/glyphicons/brown-arrow-icon.png) no-repeat 0 0;
   float: left;
   margin: 8px 0 0 10px;
+}
+/* homepage featured content - latest post */
+#latest-post-container .post-container {
+  background: #e9e9e9;
+  float: left;
+  padding: 2%;
+  margin: 0 1%;
+  width: 23%;
+  height: 295px;
+}
+#latest-post-container .post {
+  position: relative;
+  background: #fff;
+  padding: 10%;
+  width: auto;
+  height: 250px;
+}
+#latest-post-container .post-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+#latest-post-container .post-content {
+  font-size: 14px;
+}
+#latest-post-container a.read-more {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }

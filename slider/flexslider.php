@@ -20,6 +20,7 @@ function flexslider_hg_rotators()
 // INIT
 function flexslider_hg_setup_init()
 {
+
 	// 'SLIDES' POST TYPE
 	$labels = array(
         'name' => __( 'Slides', 'flexslider_hg' ),
@@ -33,24 +34,25 @@ function flexslider_hg_setup_init()
         'search_items' => __( 'Search Slides', 'flexslider_hg' ),
         'not_found' => __( 'No Slide found', 'flexslider_hg' ),
         'not_found_in_trash' => __( 'No Slide found in Trash', 'flexslider_hg' ), 'parent_item_colon' => '' );
-	
-	$args = array(
-		'labels'               => $labels,
-		'public'               => true,
-		'publicly_queryable'   => true,
-		'_builtin'             => false,
-		'show_ui'              => true, 
-		'query_var'            => true,
-		'rewrite'              => apply_filters( 'flexslider_hg_post_type_rewite', array( "slug" => "slides" )),
-		'capability_type'      => 'post',
-		'hierarchical'         => false,
-		'menu_position'        => 26.6,
-		'supports'             => array( 'title', 'thumbnail', 'excerpt', 'page-attributes' ),
-		'taxonomies'           => array(),
-		'has_archive'          => true,
-		'show_in_nav_menus'    => false
-	);
+
+    $args = array(
+        'labels'               => $labels,
+        'public'               => true,
+        'publicly_queryable'   => true,
+        '_builtin'             => false,
+        'show_ui'              => true,
+        'query_var'            => true,
+        'rewrite'              => apply_filters( 'flexslider_hg_post_type_rewite', array( "slug" => "slides" )),
+        'capability_type'      => 'post',
+        'hierarchical'         => false,
+        'menu_position'        => 26.6,
+        'supports'             => array( 'title', 'thumbnail', 'excerpt', 'page-attributes' ),
+        'taxonomies'           => array(),
+        'has_archive'          => true,
+        'show_in_nav_menus'    => false
+    );
 	register_post_type( 'slides', $args );
+
 }
 
 
@@ -193,7 +195,8 @@ function show_flexslider_rotator( $slug )
 // ADMIN META BOX
 function flexslider_hg_create_slide_metaboxes() 
 {
-    add_meta_box( 'flexslider_hg_metabox_1', __( 'Slide Settings', 'flexslider-hg' ), 'flexslider_hg_metabox_1', 'slides', 'normal', 'default' );
+  //  die('test');
+    add_meta_box( 'flexslider_hg_metabox_1', __( 'Slide Settings', 'flexslider-hg' ), 'flexslider_hg_metabox_1', 'slides', 'advanced', 'high' );
 }
 function flexslider_hg_metabox_1() 
 {
@@ -271,9 +274,20 @@ function flexslider_hg_add_columns( $column )
 // SHORTCODE
 function flexslider_hg_shortcode($atts, $content = null)
 {
-	$slug = isset($atts['slug']) ? $atts['slug'] : "homepage";
+    global $NHP_Options;
+
+    $slider = !empty($NHP_Options->options['featured-slider']) ? true : false;
+
+    //echo '$slider<pre>'; print_r($slider); echo '</pre>';
+
+    $slug = isset($atts['slug']) ? $atts['slug'] : "homepage";
 	if(!$slug) { return apply_filters( 'flexslider_hg_empty_shortcode', "<p>Flexslider: Please include a 'slug' parameter. [flexslider slug=homepage]</p>" ); }
-	return show_flexslider_rotator( $slug );
+
+    if($slider)
+        return show_flexslider_rotator( $slug );
+
+    return null;
+
 }
 
 

@@ -10,31 +10,29 @@
  * @package _tk
  */
 
-get_header(); ?>
-<?php
-if(is_product()) :
-?>
-			<div class="main-content-inner col-12 col-lg-12">
-		<?php  woocommerce_content(); ?>
-</div>
+//get default shop template
+$default_template = _tk_get_default_template('default-shop-layout');
 
-<?php
-endif;
-?>
+get_header();
 
-<?php
-if(is_shop()):
-?>
-<div class="main-content-inner col-8 col-lg-8">
-		<?php  woocommerce_content(); ?>
-</div>
-<div class="col-md-4">
-<?php
-get_sidebar('shop');
-?>
-</div>
-<?php
-endif;
-?>
+if($default_template['sidebar'])
+    echo $default_template['sidebar'];
 
-<?php get_footer(); ?>
+if(is_product()){
+?>
+    <div class="<?php echo $default_template['class']; ?>">
+        <?php woocommerce_content(); ?>
+    </div>
+<?php
+}
+
+if(is_shop()){
+?>
+    <div class="<?php echo $default_template['class']; ?>">
+        <?php woocommerce_content(); ?>
+    </div>
+<?php
+}
+
+get_footer();
+?>

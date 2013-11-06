@@ -190,28 +190,6 @@ function setup_framework_options(){
                                         //'class' => '' //Set custom classes for elements if you want to do something a little different - default is "regular-text"
                                     ),
                                     array(
-                                        'id' => 'homepage-featured-content',
-                                        'type' => 'select',
-                                        'title' => __('Homepage Featured Content', 'nhp-opts'),
-                                        'sub_desc' => __('content under slider', 'nhp-opts'),
-                                        'desc' => __('', 'nhp-opts'),
-                                        'options' => array(
-                                            '0' => 'None',
-                                            '1' => 'Latest Post',
-                                            '2' => 'Static Page',
-                                            '3' => 'Custom Widgets'),
-                                        'std' => '0'
-                                    ),
-                                    array(
-                                        'id' => 'homepage-featured-content-page',
-                                        'type' => 'pages_select',
-                                        'title' => __('Homepage Featured Content Page', 'nhp-opts'),
-                                        'sub_desc' => __('* "Homepage Featured Content" must be set to "Static Page"', 'nhp-opts'),
-                                        'desc' => __('', 'nhp-opts'),
-                                        'args' => array(),//uses get_pages
-
-                                    ),
-                                    array(
                                         'id' => 'theme-font',
                                         'type' => 'google_webfonts',//doesnt need to be called for callback fields
                                         'title' => __('Custom Google Webfonts', 'nhp-opts'),
@@ -250,8 +228,9 @@ function setup_framework_options(){
                             'sub_desc' => __('', 'nhp-opts'),
                             'desc' => __('', 'nhp-opts'),
                             'options' => array(
-                                '1' => 'Window',
-                                '2' => 'Fullscreen'),
+                                '1' => 'Rounded',
+                                '2' => 'Square',
+                                '3' => 'Fullscreen'),
                                 //'3' => 'Opt 3'),
                             'std' => '1'
                         ),
@@ -264,6 +243,28 @@ function setup_framework_options(){
         'title' => __('Layout', 'nhp-opts'),
         'desc' => __('<p class="description">The layouts section allows you to choose your default page template, adjust the structure of your site, and more.</p>', 'nhp-opts'),
         'fields' => array(
+            array(
+                'id' => 'homepage-featured-content',
+                'type' => 'select',
+                'title' => __('Homepage Featured Content', 'nhp-opts'),
+                'sub_desc' => __('content under slider', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'options' => array(
+                    '0' => 'None',
+                    '1' => 'Latest Post',
+                    '2' => 'Static Page',
+                    '3' => 'Custom Widgets'),
+                'std' => '0'
+            ),
+            array(
+                'id' => 'homepage-featured-content-page',
+                'type' => 'pages_select',
+                'title' => __('Homepage Featured Content Page', 'nhp-opts'),
+                'sub_desc' => __('* "Homepage Featured Content" must be set to "Static Page"', 'nhp-opts'),
+                'desc' => __('', 'nhp-opts'),
+                'args' => array(),//uses get_pages
+
+            ),
             //Must provide key => value(array:title|img) pairs for radio options
             array(
                 'id' => 'default-page-layout',
@@ -279,7 +280,7 @@ function setup_framework_options(){
                 'std' => '2'
             ),
             array(
-                'id' => 'deafult-shop-layout',
+                'id' => 'default-shop-layout',
                 'type' => 'radio_img',
                 'title' => __('Set Default Shop Layout', 'nhp-opts'),
                 'sub_desc' => __('click on a layout to edit its settings', 'nhp-opts'),

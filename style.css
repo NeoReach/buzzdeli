@@ -9,7 +9,7 @@ License: GNU General Public License
 License URI: see license.txt
 Tags: deli theme, rank executives, executive themes, fresh theme
 */
-@import url(includes/css/bootstrap-wp.css);@import url(includes/css/theme.css);
+@import url(includes/css/fonts.css);@import url(includes/css/bootstrap-wp.css);@import url(includes/css/theme.css);
 .alignleft{display:inline;float:left;margin-right:1.5em}
 .alignright{display:inline;float:right;margin-left:1.5em}
 .aligncenter{clear:both;display:block;margin:0 auto}

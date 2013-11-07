@@ -56,12 +56,7 @@ header a:hover {
   box-shadow: 0px 0px 5px 1px rgba(50, 50, 50, 0.5);
   border-top: 3px solid #67a500;
 }
-#colophon a {
-  color: #cbff74;
-}
-#colophon a:hover {
-  color: #ffffff;
-}
+
 img.wp-post-image,
 .product .thumbnails img {
   -webkit-border-radius: 500px;
@@ -254,3 +249,61 @@ img.wp-post-image,
   bottom: 15px;
   right: 15px;
 }
+/* hide because of infinite scroller */
+.woocommerce-pagination{display:none;}
+
+/* bootstrap nav menu override
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus
+.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}
+.navbar-form{margin-top:6px;margin-bottom:6px}
+.navbar-form .form-control,.navbar-form .radio,.navbar-form .checkbox{display:inline-block}
+.navbar-form .radio,.navbar-form .checkbox{margin-top:0;margin-bottom:0}
+.navbar-nav>li>.dropdown-menu{margin-top:0;border-top-right-radius:0;border-top-left-radius:0}
+.navbar-fixed-bottom .navbar-nav>li>.dropdown-menu{border-bottom-right-radius:0;border-bottom-left-radius:0}
+.navbar-nav>.dropdown>a:hover .caret,.navbar-nav>.dropdown>a:focus .caret{border-top-color:#333;border-bottom-color:#333}
+.navbar-nav>.open>a,.navbar-nav>.open>a:hover,.navbar-nav>.open>a:focus{color:#555;background-color:#d5d5d5}
+.navbar-nav>.open>a .caret,.navbar-nav>.open>a:hover .caret,.navbar-nav>.open>a:focus .caret{border-top-color:#555;border-bottom-color:#555}
+.navbar-nav>.dropdown>a .caret{border-top-color:#777;border-bottom-color:#777}
+.navbar-nav.pull-right>li>.dropdown-menu,.navbar-nav>li>.dropdown-menu.pull-right{right:0;left:auto}
+.navbar-inverse{background-color:#222}
+.navbar-inverse .navbar-brand{color:#999}
+.navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus{color:#fff;background-color:transparent}
+.navbar-inverse .navbar-text{color:#999}.navbar-inverse .navbar-nav>li>a{color:#999}
+.navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus{color:#fff;background-color:transparent}
+
+Header Link Color: #67a500
+Header Link Hover Color:#7ec30c
+Visited: #67a500
+*/
+.nav{text-transform:uppercase;}
+.dropdown-menu{text-transform:none;}
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.active>a:focus{background-color:#66931c!important;}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #66931c!important;
+}
+.navbar-inverse .navbar-nav>.dropdown>a .caret{border-top-color: #fff!important; border-bottom-color: #fff!important;}
+/*.nav-collapse .active a{color:#88c424!important;}*/
+.nav-collapse a:hover{background:#66931c!important;}
+
+.dropdown-menu {top:106%!important;}
+
+#homepage-widget-container .widget-container{float:left;padding:2%;width:32%;margin:0 1% 0 0;}
+#footer-widget-container .widget-container{float:left;background:none!important;padding:2%;width:32%;margin:0 1% 0 0;}
+#footer-widget-container .widget,.navbar-header .widget{background:none!important;}
+#footer-widget-container .search-form label,.navbar-header .search-form label{width:100%;}
+
+.navbar-header .widget-container{float:right;background:none!important;width:20%;}
+.navbar-header .widget{padding: 5px 0 0 0;}
+
+
+#footer-nav {max-width: 1170px;color:#ffffff;}
+#footer-nav li a{color:#4c7900;background:none;}
+#footer-nav li a:hover{color:#fff;-moz-border-radius: 50px;-webkit-border-radius: 50px;border-radius:50px;}
+
+#colophon a{color:#4c7900;}
+.site-info{font-family:arial;text-align:center;font-size:12px;font-style:italic;margin:20px 0 0 0;}
+body{position: relative;}
+#mini-cart{background:rgba(255,255,255,.7);position:fixed;top:60px;left:0;width: 280px; height: 300px;z-index:99999;}
+#mini-cart .quantity{margin:5px 0 0 0;}

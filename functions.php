@@ -1,15 +1,20 @@
 <?php
+//remove wordpress admin
+add_filter('show_admin_bar', '__return_false');
+
 /**
  * _tk functions and definitions
  *
  * @package _tk
  */
+//var_dump(get_template_directory()); echo '<br>';
 define('FRESH_DELI_DIR_PATH',get_template_directory()."/");
 define('FRESH_DELI_DIR_URI',get_template_directory_uri()."/");
 define('FRESH_DELI_OPTIONS_PATH',FRESH_DELI_DIR_PATH.'options/');
 define('FRESH_DELI_OPTIONS_URI',FRESH_DELI_DIR_URI.'options/');
 define('FRESH_DELI_SHORTCODES_PATH',FRESH_DELI_DIR_PATH.'shortcodes/');
 define('FRESH_DELI_SCROLL_PATH',FRESH_DELI_DIR_PATH.'scroll/');
+define('FRESH_DELI_SCROLL_URI',FRESH_DELI_DIR_URI.'scroll/');
 define('FRESH_DELI_SLIDER_PATH',FRESH_DELI_DIR_PATH.'slider/');
 define('FRESH_DELI_SLIDER_URI',FRESH_DELI_DIR_URI.'slider/');
 define('FRESH_DELI_CSS',FRESH_DELI_DIR_URI.'includes/css/');
@@ -20,14 +25,6 @@ define('FRESH_DELI_IMG',FRESH_DELI_DIR_URI.'includes/img/');
  * Require Executive Options
  */
 require_once(FRESH_DELI_DIR_PATH . '/nhp-options.php');
-/**
- * Require Executive Scroll
- */
-require_once(FRESH_DELI_SCROLL_PATH.'scroll.php');
-/**
- * Require Executive ShortCodes
- */
-require_once(FRESH_DELI_SHORTCODES_PATH.'ExecutiveShortCodes.php');
 /**
  * Require Slider
  */
@@ -63,6 +60,16 @@ require_once get_template_directory() . '/includes/jetpack.php';
 require_once get_template_directory() . '/includes/bootstrap-wp-navwalker.php';
 
 /**
+ * Require Infinite Scroll
+ */
+include_once(FRESH_DELI_SCROLL_PATH.'scroll.php');
+
+/**
+ * Require Executive ShortCodes
+ */
+include_once(FRESH_DELI_SHORTCODES_PATH.'ExecutiveShortCodes.php');
+
+/**
  * Theme Hooks, Actions, Filters and Shortcodes
  */
 add_action( 'after_setup_theme', '_tk_setup' );
@@ -70,6 +77,9 @@ add_action( 'widgets_init', '_tk_widgets_init' );
 
 add_action( 'admin_enqueue_scripts', '_tk_admin_scripts' );
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
+
+//add footer widget area
+add_action('_tk_footer_widget_area','_tk_footer_widget_area');
 
 /* Add Theme Option Actions */
 //general
@@ -86,10 +96,6 @@ add_action('_tk_append_code_post','_tk_append_code_post');
 //colorization
 add_action('_tk_set_custom_css','_tk_set_custom_css');
 
-/* Theme Filters */
-add_filter('body_class','_tk_body_class');
-
-
 add_action( 'init', 'flexslider_hg_setup_init' );
 add_action( 'admin_head', 'flexslider_hg_admin_icon' );
 add_action( 'wp_enqueue_scripts', 'flexslider_wp_enqueue' );
@@ -98,6 +104,9 @@ add_action( 'save_post', 'flexslider_hg_save_meta', 1, 2 );
 add_filter( 'manage_edit-slides_columns', 'flexslider_hg_columns' );
 add_action( 'manage_slides_posts_custom_column', 'flexslider_hg_add_columns' );
 add_shortcode('flexslider', 'flexslider_hg_shortcode');
+
+/* Theme Filters */
+add_filter('body_class','_tk_body_class');
 
 /**
  * Get Theme Logo
@@ -179,25 +188,57 @@ if(!function_exists('_tk_homepage_featured_content'))
                 $html = $html.'</div>';
                 //echo '$latest_posts: <pre>'; print_r($latest_posts); echo '</pre>';
                 echo $html;
-                break;
+            break;
             case 2:
-
                 $page = get_post($page_id,'ARRAY_A');
-                echo  $html . $page['post_content'].'</div>';
-
-                break;
+                echo $page['post_content'];
+            break;
             case 3:
                 echo '<div id="homepage-widget-container">';
                 if(function_exists('dynamic_sidebar') && dynamic_sidebar('Homepage Widget Area')){
 
                 }
                 echo '</div>';
-                break;
+            break;
         }
 
 
     }
 }
+
+/**
+ * Get Footer Widgets
+ */
+if(!function_exists('_tk_footer_widget_area')){
+    function _tk_footer_widget_area()
+    {
+
+        if(function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Widget Area')){
+           // displays registered widget
+        }
+
+    }
+}
+
+if ( ! function_exists( '_tk_get_sidebar' ) )
+{
+    function _tk_get_sidebar($type)
+    {
+        ob_start();
+
+        if($type =='shop')
+            if(function_exists('dynamic_sidebar') && dynamic_sidebar('Shop Sidebar')){}
+        else
+            get_sidebar();
+
+        $sidebar = ob_get_contents();
+        ob_end_clean();
+        ob_flush();
+
+        return $sidebar;
+    }
+}
+
 /**
  * Get Default Template
  *
@@ -207,24 +248,17 @@ if ( ! function_exists( '_tk_get_default_template' ) )
 {
     function _tk_get_default_template($option)
     {
-
         global $NHP_Options;
         $data = array();
         $sidebar_type = '';
+        $template = !empty($NHP_Options->options[$option]) ? $NHP_Options->options[$option] : null;
+        $data['sidebar'] = true;
 
         if(strpos($option,'shop') !== false)
             $sidebar_type = 'shop';
 
-        $template = !empty($NHP_Options->options[$option]) ? $NHP_Options->options[$option] : null;
-        $data['sidebar'] = true;
-
         //echo '$sidebar_type: '; var_dump($sidebar_type);echo '<br><br>';die();
-
-        ob_start();
-        get_sidebar($sidebar_type);
-        $sidebar = ob_get_contents();
-        ob_end_clean();
-        ob_flush();
+        $sidebar = _tk_get_sidebar($sidebar_type);
 
         switch($template)
         {
@@ -243,60 +277,10 @@ if ( ! function_exists( '_tk_get_default_template' ) )
                 $data['class'] = 'main-content-inner col-9 col-lg-9';
                 $sidebar_class = 'pull-right';
                 break;
-
         }
 
         if($data['sidebar'])
             $data['sidebar'] = '<div class="main-content-inner col-3 col-md-3 col-lg-3 '.$sidebar_class.'">'.$sidebar.'</div>';
-
-
-        return $data;
-    }
-}
-
-/**
- * Get Shop Default Template
- *
- * @values   1 => Full Width, 2 => 2 Col Left, 3 => 2 Col Right
- */
-if ( ! function_exists( '_tk_get_default_shop_template' ) )
-{
-    function _tk_get_default_shop_template()
-    {
-        global $NHP_Options;
-        $data = array();
-        $template = !empty($NHP_Options->options['default-shop-layout']) ? $NHP_Options->options['default-shop-layout'] : null;
-        $data['sidebar'] = true;
-
-        ob_start();
-        get_sidebar();
-        $sidebar = ob_get_contents();
-        ob_end_clean();
-        ob_flush();
-
-        switch($template)
-        {
-            //fullwidth
-            case 1:
-                $data['class'] = 'main-content-inner col-12 col-lg-12';
-                $data['sidebar'] = false;
-                break;
-            //2 col left
-            case 2:
-                $data['class'] = 'main-content-inner col-9 col-lg-9';
-                $sidebar_class = 'pull-left';
-                break;
-            //2 col right
-            case 3:
-                $data['class'] = 'main-content-inner col-9 col-lg-9';
-                $sidebar_class = 'pull-right';
-                break;
-
-        }
-
-        if($data['sidebar'])
-            $data['sidebar'] = '<div class="main-content-inner col-3 col-md-3 col-lg-3 '.$sidebar_class.'">'.$sidebar.'</div>';
-
 
         return $data;
     }
@@ -397,6 +381,7 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
             $css .= '.navbar{background-color:'.$color_header_bg.'!important;}';
         if($color_footer_border_top)
             $css .= '.navbar{border-bottom:3px solid '.$color_footer_border_top.'!important;}';
+      /*
         if($color_header_text)
             $css .= '.navbar a{color:'.$color_header_text.'!important;}';
         if($color_header_link)
@@ -405,6 +390,7 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
             $css .= '.navbar a:hover{color:'.$color_link_hover.'!important;}';
         if($color_header_link_visited)
             $css .= '.navbar a:visited{color:'.$color_link_visited.'!important;}';
+        */
 
         //footer
         if($color_footer_bg)
@@ -479,7 +465,11 @@ if ( ! function_exists( '_tk_setup' ) ) {
             */
             add_theme_support( 'post-thumbnails' );
 
+            //echo 'function exist:'; var_dump(function_exists( 'add_image_size' ) );
 
+            if ( function_exists( 'add_image_size' ) ) {
+                add_image_size( 'mini-cart-thumb', '100','75');
+            }
         }
 
         /**
@@ -494,7 +484,8 @@ if ( ! function_exists( '_tk_setup' ) ) {
          * This theme uses wp_nav_menu() in one location.
         */
         register_nav_menus( array(
-            'primary'  => __( 'Header bottom menu', '_tk' ),
+            'nav_header'  => __( 'Header Menu', '_tk' ),
+            'nav_footer'  => __( 'Footer Menu', '_tk' ),
         ) );
 
     } //end function _tk_setup
@@ -536,6 +527,15 @@ function _tk_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 
+    register_sidebar( array(
+        'name' => __( 'Footer Widget Area', '_tk' ),
+        'id' => 'footer-widget-area',
+        'description' => __( 'The footer widget area', '_tk' ),
+        'before_widget' => '<div id="%1$s" class="widget-container %2$s"><div class="widget">',
+        'after_widget' => '</div></div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
 
 }
 
@@ -559,11 +559,13 @@ function _tk_scripts() {
     wp_enqueue_style( '_tk-bootstrap_fill', '//cdn.jsdelivr.net/bootstrap/3.0.1/css/bootstrap.min.css ');
     wp_enqueue_style( '_tk-bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css' );
     wp_enqueue_style( '_tk-glyphicons', get_template_directory_uri() . '/includes/resources/glyphicons/css/bootstrap-glyphicons.css' );
+    wp_enqueue_style( '_tk-jquerytools-scrollable-vertical', get_template_directory_uri() . '/includes/css/scrollable-vertical.css' );
     wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
 
     //load js
     wp_enqueue_script( 'jquery');
-    wp_enqueue_script('_tk-backendjs', FRESH_DELI_JS.'frontend.js', array('jquery') );
+    wp_enqueue_script( '_tk-jquerytools', get_template_directory_uri() . '/includes/js/jquery.tools.min.js', array('jquery') );
+    wp_enqueue_script('_tk-frontend', FRESH_DELI_JS.'frontend.js', array('jquery') );
     wp_enqueue_script('_tk-bootstrapjs', get_template_directory_uri().'/includes/resources/bootstrap/js/bootstrap.min.js', array('jquery') );
     wp_enqueue_script( '_tk-bootstrapwp', get_template_directory_uri() . '/includes/js/bootstrap-wp.js', array('jquery') );
     wp_enqueue_script( '_tk-skip-link-focus-fix', get_template_directory_uri() . '/includes/js/skip-link-focus-fix.js', array(), '20130115', true );
@@ -620,6 +622,7 @@ function init_flexslider()
  */
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
 add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+
 
 /**
  * WooCommerce Loop Product Thumbs

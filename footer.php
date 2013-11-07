@@ -17,16 +17,30 @@
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="container">
 		<div class="row">
-			<div class="site-footer-inner col-12">
-			
-				<div class="site-info">
-					<?php do_action( '_tk_credits' ); ?>
-					<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', '_tk' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', '_tk' ), 'WordPress' ); ?></a>
-					<span class="sep"> | </span>
-					<?php printf('<a href="http://RankExecitives/" rel="designer">RankExecutives.com</a>' ); ?>
-				</div><!-- close .site-info -->
-			
-			</div>	
+			<div id="footer-widget-container" class="site-footer-inner col-12">
+                <?php
+
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'nav_footer',
+                        'container_class' => 'nav-collapse collapse navbar-responsive-collapse',
+                        'menu_class' => 'nav navbar-nav',
+                        'fallback_cb' => '',
+                        'menu_id' => 'footer-nav',
+                        'walker' => new wp_bootstrap_navwalker()
+                    )
+                );
+                do_action('_tk_footer_widget_area');
+
+                ?>
+                <div class="clear"></div>
+			</div>
+            <div class="site-info">
+                <?php do_action( '_tk_credits' ); ?>
+
+                Designed by <a href="http://www.rankexecutives.com" target="_blank">Executive WordPress Themes</a> | Powered by <a href="http://wordpress.org/">Wordpress</a>
+
+            </div><!-- close .site-info -->
 		</div>
 	</div><!-- close .container -->
 </footer><!-- close #colophon -->

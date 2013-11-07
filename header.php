@@ -24,7 +24,16 @@ do_action('_tk_append_code_head');
 </head>
 
 <body <?php body_class(); ?>>
-<?php do_action( 'before' );?>
+<?php
+do_action( 'before' );
+
+ob_start();
+woocommerce_mini_cart();
+$mini_cart = ob_get_clean();
+ob_flush();
+
+echo '<div id="mini-cart">'.$mini_cart.'</div>';
+?>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -37,23 +46,26 @@ do_action('_tk_append_code_head');
             </button>
             <?php
                 do_action('_tk_get_logo');
-                do_action('_tk_get_logo_text');
+                //do_action('_tk_get_logo_text');
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'nav_header',
+                        'container_class' => 'nav-collapse collapse navbar-responsive-collapse',
+                        'menu_class' => 'nav navbar-nav',
+                        'fallback_cb' => '',
+                        'menu_id' => 'main-menu',
+                        'walker' => new wp_bootstrap_navwalker()
+                    )
+                );
+                echo '<div class="widget-container">';
+                the_widget( 'WP_Widget_Search' );
+                echo '</div>';
             ?>
             <div class="clearfix"></div>
 
         </div>
-        <div>
-             <?php wp_nav_menu(
-			                array(
-			                    'theme_location' => 'primary',
-			                    'container_class' => 'nav-collapse collapse navbar-responsive-collapse',
-			                    'menu_class' => 'nav navbar-nav',
-			                    'fallback_cb' => '',
-			                    'menu_id' => 'main-menu',
-			                    'walker' => new wp_bootstrap_navwalker()
-			                )
-			            ); ?>
-        </div><!--/.nav-collapse -->
+
+       <!--/.nav-collapse -->
     </div>
 </div>
 

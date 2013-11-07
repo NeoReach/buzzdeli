@@ -10,6 +10,11 @@ if(!class_exists('NHP_Options')){
     require_once( dirname( __FILE__ ) . '/options/options.php' );
 }
 
+/**
+ * Require RSS Parser for rank executives feed
+ */
+include_once('includes/rss-parser.php'); // include the php file with the class
+
 /*
  * 
  * Custom function for filtering the sections array given by theme, good for child themes to override or add to the sections.
@@ -115,10 +120,10 @@ function setup_framework_options(){
 //$args['menu_icon'] = '';
 
 //Custom menu title for options page - default is "Options"
-    $args['menu_title'] = __('Executive Options', 'nhp-opts');
+    $args['menu_title'] = __('ExecutiveOptions', 'nhp-opts');
 
 //Custom Page Title for options page - default is "Options"
-    $args['page_title'] = __('Executive Options - The Fresh Deli', 'nhp-opts');
+    $args['page_title'] = __('ExecutiveOptions - The Fresh Deli', 'nhp-opts');
 
 //Custom page slug for options page (wp-admin/themes.php?page=***) - default is "nhp_theme_options"
     $args['page_slug'] = 'nhp_theme_options';
@@ -505,6 +510,12 @@ function setup_framework_options(){
         $tags = $theme_data['Tags'];
     }
 
+    //set theme info
+    $rss_parser = new RssParser();
+   $feed_html = $rss_parser->getHtml('http://rankexecutives.com/feed/');
+
+
+
     $theme_name = isset($theme_data['Name']) ? $theme_data['Name'] : null;
 
     $theme_info = '<div class="nhp-opts-section-desc">';
@@ -514,6 +525,8 @@ function setup_framework_options(){
     $theme_info .= '<p class="nhp-opts-theme-data description theme-version">'.__('<strong>Version:</strong> ', 'nhp-opts').$version.'</p>';
     $theme_info .= '<p class="nhp-opts-theme-data description theme-description">'.$description.'</p>';
     $theme_info .= '<p class="nhp-opts-theme-data description theme-tags">'.__('<strong>Tags:</strong> ', 'nhp-opts').implode(', ', $tags).'</p>';
+
+    $theme_info .= $feed_html;
     $theme_info .= '</div>';
 
     $tabs['theme_info'] = array(

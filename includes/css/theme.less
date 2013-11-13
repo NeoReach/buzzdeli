@@ -192,13 +192,22 @@ Visited: #67a500
   z-index: 999;
   display:none;
 }
+//mobile nav
+.navbar{padding:0!important;}
+.container>.navbar-header, .container>.navbar-collapse {margin:5px 0;}
+.navbar-toggle{background:#67a500!important;border:0;}
+.navbar-inverse .navbar-toggle .icon-bar{background-color: #fff;color:#fff;}
+
 //woocommerce product list page theme override
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{height: 315px;margin: 0 2.9% 1.992em 0!important;}
 .add_to_cart_button{position:absolute!important;bottom:10px!important;left: 50%!important;margin-left: -49px!important;}
 
 
 /* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
+  .nav-collapse.collapse{display:none!important;}
+  .collapse{display:none!important;}
+  .navbar-header .widget-container{float:left;}
   .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{height: 250px;}
 }
 

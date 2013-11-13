@@ -147,7 +147,8 @@
             opts.loading.start = opts.loading.start || function() {
 				
 				$(opts.navSelector).hide();
-				console.log
+
+                console.log
 				opts.loading.msg
 					.appendTo(opts.loading.selector)
 					.show(opts.loading.speed, function () {

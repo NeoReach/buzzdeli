@@ -28,7 +28,7 @@ function init_infinite_scroll($container){
 		itemSelector : "ul.products li.product",
 		navSelector  : "div.sod-inf-nav-next",            
     	nextSelector : "div.sod-inf-nav-next a:first",  
-		debug:true,
+		debug:false,
 		state: {
             isDestroyed: false,
             isDone: false

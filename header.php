@@ -29,12 +29,28 @@ do_action( 'before' );
 
 ob_start();
 woocommerce_mini_cart();
-$mini_cart = ob_get_clean();
+$mini_cart_html = ob_get_clean();
 ob_flush();
-
-echo '<div id="mini-cart">'.$mini_cart.'</div>';
 ?>
+<div id="mini-cart" class="visible-lg">
+    <div id="mcart-loader"></div>
+    <span id="mini-cart-toggle"></span>
+    <!-- HTML structures-->
+    <div id="actions">
+        <a class="prev">&laquo; PREVIOUS</a>
+        <a class="next">NEXT &raquo;</a>
+    </div>
 
+    <!-- start: root element for scrollable -->
+    <div class="scrollable vertical">
+        <div class="items">
+            <div>
+                <?php echo $mini_cart_html?>
+            </div>
+        </div> <!-- end: root element for the items -->
+    </div>
+    <!-- end: root element for scrollable -->
+</div>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">

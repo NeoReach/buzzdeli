@@ -11,6 +11,19 @@
     width: 272px;
     border-top:1px solid #ddd;
 }
+.vertical-mobile {
+    background:#fff;
+    color:#000;
+    padding:0 15px;
+    /* required settings */
+    position:relative;
+    overflow:hidden;
+
+    /* vertical scrollers have typically larger height than width */
+    height: 210px;
+    width: 272px;
+    border-top:1px solid #ddd;
+}
 
 /* root element for scrollable items */
 .items {
@@ -60,6 +73,8 @@
     text-decoration:underline;
     color:#000;
 }
+.action-mobile{width:100%!important;}
+.action-mobile a {color:#fff!important;}
 
 .disabled {
     visibility:hidden;

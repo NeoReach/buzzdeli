@@ -32,10 +32,10 @@ woocommerce_mini_cart();
 $mini_cart_html = ob_get_clean();
 ob_flush();
 ?>
-<div id="mini-cart" class="visible-lg">
-    <div id="mcart-loader"></div>
+<div id="mini-cart" class="visible-lg woocommerce">
+
     <span id="mini-cart-toggle"></span>
-    <!-- HTML structures-->
+
     <div id="actions">
         <a class="prev">&laquo; PREVIOUS</a>
         <a class="next">NEXT &raquo;</a>
@@ -43,6 +43,7 @@ ob_flush();
 
     <!-- start: root element for scrollable -->
     <div class="scrollable vertical">
+        <div class="mcart-loader"></div>
         <div class="items">
             <div>
                 <?php echo $mini_cart_html?>
@@ -55,11 +56,45 @@ ob_flush();
     <div class="container">
         <div class="navbar-header">
 
+            <div id="mobile-mcart-button"></div>
+
+            <div id="mobile-mcart-container">
+
+                <div id="actions" class="action-mobile">
+                    <a class="prev">&laquo; PREVIOUS</a>
+                    <a class="next">NEXT &raquo;</a>
+                </div>
+
+                <div class="scrollable vertical-mobile">
+                    <div class="mcart-loader"></div>
+                    <div class="items">
+                        <div>
+                        <?php echo $mini_cart_html; ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <div id="mobile-nav">
+                <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'nav_header',
+                            'container_class' => 'mobile-nav-container',
+                            'menu_class' => 'mobile-nav',
+                            'fallback_cb' => false,
+                            'menu_id' => 'main-menu',
+                            //'walker' => new wp_bootstrap_navwalker()
+                        )
+                    );
+                ?>
+            </div>
             <?php
                 do_action('_tk_get_logo');
                 //do_action('_tk_get_logo_text');

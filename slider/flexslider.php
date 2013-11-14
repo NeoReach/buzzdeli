@@ -14,9 +14,6 @@ function flexslider_hg_rotators()
 }
 
 
-
-
-
 // INIT
 function flexslider_hg_setup_init()
 {
@@ -45,11 +42,11 @@ function flexslider_hg_setup_init()
         'rewrite'              => apply_filters( 'flexslider_hg_post_type_rewite', array( "slug" => "slides" )),
         'capability_type'      => 'post',
         'hierarchical'         => false,
-        'menu_position'        => 26.6,
+        'menu_position'        => 100,
         'supports'             => array( 'title', 'thumbnail', 'excerpt', 'page-attributes' ),
         'taxonomies'           => array(),
         'has_archive'          => true,
-        'show_in_nav_menus'    => false
+        'show_in_nav_menus'    => true
     );
 	register_post_type( 'slides', $args );
 

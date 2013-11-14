@@ -473,7 +473,7 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
         if($color_header_link)
             $css .= '.navbar a{color:'.$color_link.'!important;}';
         if($color_header_link_hover)
-            $css .= '.navbar a:hover{color:'.$color_link_hover.'!important;}';
+            $css .= '.navbar a:hover{color:'.$color_link_$color_footer_texthover.'!important;}';
         if($color_header_link_visited)
             $css .= '.navbar a:visited{color:'.$color_link_visited.'!important;}';
         */
@@ -484,7 +484,7 @@ if ( ! function_exists( '_tk_set_custom_css' ) ) {
         if($color_header_bottom_border)
             $css .= '#colophon{bottom-top:3px solid '.$color_header_bottom_border.'!important;}';
         if($color_footer_text)
-            $css .= '#colophon a{color:'.$color_footer_text.'!important;}';
+            $css .= '#colophon {color:'.$color_footer_text.'!important;}';
         if($color_footer_link)
             $css .= '#colophon a{color:'.$color_footer_link.'!important;}';
         if($color_footer_link_hover)
